@@ -11,6 +11,7 @@ alias gitlog='git log --all --graph --max-count=42 --oneline'
 alias gitlogall='git log --all --graph --oneline'
 alias gitd='git status && gitlog'
 alias diff='vimdiff'
+alias disklist='diskutil list'
 
 # a::command
 alias a='. $environment/bin/a'
