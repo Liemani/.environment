@@ -29,7 +29,7 @@ alias shrc='. $HOME/.'"$shell"'rc'
 alias vimvimrc='vim $environment/data/.vimrc'
 alias vimgitignore='vim $environment/data/.gitignore'
 alias vimrecord='vim $personal/.private/record.txt'
-alias vimdump='vim $personal/.private/dump.txt'
+alias vimdump='vim $private/dump.txt'
 alias vimalias='vim $environment/data/alias.sh'
 alias vimknownhosts='vim ~/.ssh/known_hosts'
 

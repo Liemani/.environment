@@ -1,9 +1,6 @@
 . $environment/data/variable.sh
 . $environment/data/alias.sh
-
-if [ -e "$address" ]; then
-  . $address
-fi
+. $environment/data/rc.sh
 
 apply_sh_script=$environment/activate.sh.d/apply_$shell.sh
 

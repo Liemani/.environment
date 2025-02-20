@@ -43,7 +43,7 @@ set display=truncate
 
 " Show a few lines of context around the cursor.  Note that this makes the
 " text scroll if you mouse-click near the start or end of the window.
-set scrolloff=0
+set scrolloff=1
 
 " Do not recognize octal numbers for Ctrl-A and Ctrl-X, most users find it
 " confusing.
@@ -101,6 +101,10 @@ set autowrite " Is this work??
 " Split
 set splitright
 set splitbelow
+
+" can move cursor to empty position when block mode
+" cons : it select empty space as space character
+" set virtualedit=block
 "------------------------------------------------------------
 " netrw variables
 

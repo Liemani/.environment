@@ -36,6 +36,7 @@ node_modules/
 *.class
 *.jar
 *.log
+.DS_Store
 
 # exclude specific base name of file
 package-lock.json
