@@ -188,14 +188,20 @@ vnoremap # :norm i# <CR>
 vnoremap ? :norm xx<CR>
 "------------------------------------------------------------
 " Macros
-let @g='ggw'  " jump to top and to next window
-" let @q='][va{zf}'   " fold from cursor to match pair and jump to next function open in c
+" jump to top and to next window
+" let @g='ggw'
+" fold from cursor to match pair and jump to next function open in c
+" let @q='][va{zf}'
 " let @q=':let @t=''/''/(v%f{%zf/tj'
 let @q=':let @t=''/''/{zf%/tj'
-let @w=':13,$foldo!'  " fold 42header
+" fold 42header
+" let @w=':13,$foldo!'
 let @e='"*y'
-" Without last space in the string ending with ^M, ^J is followed to register 'd'
+" Without last space in the string ending with ^M, ^J is followed to register
 let @d=':r !date "+\%F \%a" '
+" copy file path to clipboard
+let @p=':let @+=expand("%:p") '
+let @h=':let @+=expand("%:p:h") '
 
 "command
 :command! Removecomments %s/\/\/.*/
