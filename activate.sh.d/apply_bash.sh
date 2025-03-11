@@ -22,7 +22,7 @@ lmi_generate_dynamic_prompt() {
 
   hostname=`hostname -s`
 
-  echo -e $(date "+%H:%M") $hostname $git_repo$prompt_path ($git_repo/$git_branch) \$" "
+  echo -e $(date "+%H:%M") $hostname $git_repo$prompt_path \($git_repo/$git_branch\) \$" "
 
   unset prompt_path
 }

@@ -1,3 +1,5 @@
+# generate assembly code
+
 if [ $# -ne 1 ]; then
   echo 'usage : compile++ <c++ file>'
   return 1

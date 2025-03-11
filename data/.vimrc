@@ -202,6 +202,7 @@ let @d=':r !date "+\%F \%a" '
 " copy file path to clipboard
 let @p=':let @+=expand("%:p") '
 let @h=':let @+=expand("%:p:h") '
+let @n=':let @+=expand("%:t") '
 
 "command
 :command! Removecomments %s/\/\/.*/
