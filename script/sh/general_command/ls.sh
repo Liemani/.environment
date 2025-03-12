@@ -1,1 +1,1 @@
-ls "$bin"
+ls $@ "$bin"

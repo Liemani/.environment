@@ -88,6 +88,21 @@ command `a` run `a_command` in $env/bin
   - And you can load that session easily by `a vimsession <vim session name>`
     - Test `a vimsession env` which I saved! :D
 
+
+
 ## memo
 `./file` could run another version of shell rather than current shell
   so i will use `$SHELL file` to run a shell script
+
+
+
+## decision record
+use "." not "bash" when calling a_command
+{
+  created : 2025-03-12 Wed
+  last_modified : 2025-03-12 Wed
+  status : accepted
+  context :
+  decision : use "."
+  consequences : a_command will use same environment(ex> alias) with parent process. But must unset local variable.
+}

@@ -1,0 +1,8 @@
+reference : https://lldb.llvm.org/use/map.html
+
+breakpoint set --name main
+
+target stop-hook add --one-liner "disassemble --pc"
+
+type format add --format hex long
+type format add --format hex "unsigned long"
