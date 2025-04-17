@@ -17,28 +17,37 @@
 # PROMPT='%F{240}%T %F{208}%~ $vcs_info_msg_0_%F{240}$LINES,$COLUMNS %F{111}%#%f '
 
 
-lmi_generate_dynamic_prompt() {
+generate_dynamic_prompt() {
   git_root=$(2>/dev/null git rev-parse --show-toplevel)
   git_repo=$(2>/dev/null basename "$git_root")
   git_branch=$(2>/dev/null git rev-parse --abbrev-ref HEAD)
 
   if [ "$git_root" ]; then
     prompt_path=${PWD##$git_root}
-  elif [[ "$PWD" == "$HOME"* ]]; then
-    prompt_path='~'${PWD##$HOME}
   elif [[ "$PWD" == "$ENVHOME"* ]]; then
     prompt_path='$ENVHOME'${PWD##$ENVHOME}
+  elif [[ "$PWD" == "$HOME"* ]]; then
+    prompt_path='~'${PWD##$HOME}
   else
-  prompt_path=$PWD
+    prompt_path=$PWD
   fi
 
-        hostname=`hostname -s`
+  username=`whoami`
+  hostname=`hostname -s`
 
-  echo -e %F{240}$(date "+%H:%M") %F{111}$hostname %F{208}$git_repo$prompt_path %F{246}\(%F{34}$git_repo%F{246}/%F{34}$git_branch%F{246}\) %F{111}%# %f
+  prompt="%F{240}$(date "+%H:%M") %F{111}$username %F{12}$hostname %F{208}$git_repo$prompt_path"
+  if [ -n "$git_repo" ]; then
+    prompt="$prompt %F{246}(%F{34}$git_repo%F{246}/%F{34}$git_branch%F{246})"
+  fi
+  prompt="$prompt %F{111}%#%f "
+
+  echo -e "$prompt"
 
   unset prompt_path
+  unset username
+  unset hostname
 }
 
 setopt PROMPT_SUBST
 
-PROMPT='$(lmi_generate_dynamic_prompt)'
+PROMPT='$(generate_dynamic_prompt)'
