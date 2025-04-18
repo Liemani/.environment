@@ -137,7 +137,7 @@ nnoremap <F2> :Explore<CR>
 nnoremap <F2><F2> :e %:r.h<CR>
 nnoremap <F2><F2><F2> :e %:r.cpp<CR>
 nnoremap <F3> :mksession! $repo_root/.vimsession<CR>
-nnoremap <F3><F3> :mksession! $personal/.private/.vimsession/
+nnoremap <F3><F3> :mksession! $private/.vimsession/
 nnoremap <F4> :q<CR>
 nnoremap <F4><F4> <C-W>:qa!<CR>
 nnoremap <F5> :e<CR>

@@ -1,8 +1,8 @@
 if [ $# -ne 1 ]; then
   echo 'usage : touch <file>'
-  echo '  `file` is relative path from $shellscript'
+  echo '  `file` is relative path from $script/sh'
   return 1
 fi
 
-touch "$shellscript/$1" &&
+touch "$script/sh/$1" &&
   a ln "$1"

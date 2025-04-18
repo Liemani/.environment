@@ -7,9 +7,9 @@ elif [[ $SHELL =~ .*/bash ]]; then
   export ENVHOME=$(realpath $(dirname ${BASH_SOURCE[0]})/../..)
 fi
 
+export derivedData=$HOME/Library/Developer/Xcode/DerivedData
 export environment=$ENVHOME/.environment
   export bin=$environment/bin
   export script=$environment/script
 export private=$ENVHOME/.private
-  export playground=$ENVHOME/0_areas/playground
-export derivedData=$HOME/Library/Developer/Xcode/DerivedData
+export playground=$ENVHOME/0_areas/playground

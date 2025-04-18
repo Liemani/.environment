@@ -10,7 +10,8 @@ fi
 echo
 echo
 echo
-echo 'path: $personal/'"${PWD#$personal}"
+# echo 'path: $personal/'"${PWD#$personal}"
+echo 'path: '"$PWD"
 
 git add --all &&
     git commit -m "$1"

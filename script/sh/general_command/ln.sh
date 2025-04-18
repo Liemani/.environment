@@ -1,10 +1,10 @@
 if [ $# -ne 1 ]; then
     echo 'usage : ln <target>'
-    echo '    target is relative path from $shellscript'
+    echo '    target is relative path from $script/sh'
     return 1
 fi
 
-target_absolute=$shellscript/$1
+target_absolute=$script/sh/$1
 
 if [ ! -f "$target_absolute" ]; then
     echo 'a::ln : no file exist ['"$target_absolute"']'

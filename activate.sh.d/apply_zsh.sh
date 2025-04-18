@@ -18,18 +18,20 @@
 
 
 generate_dynamic_prompt() {
+  PWD=$(realpath $PWD)
+
   git_root=$(2>/dev/null git rev-parse --show-toplevel)
   git_repo=$(2>/dev/null basename "$git_root")
   git_branch=$(2>/dev/null git rev-parse --abbrev-ref HEAD)
 
-  if [ "$git_root" ]; then
-    prompt_path=${PWD##$git_root}
+  if [ -n "$git_root" ]; then
+    prompt_path="${PWD##$git_root}"
   elif [[ "$PWD" == "$ENVHOME"* ]]; then
-    prompt_path='$ENVHOME'${PWD##$ENVHOME}
+    prompt_path='$ENVHOME'"${PWD##$ENVHOME}"
   elif [[ "$PWD" == "$HOME"* ]]; then
-    prompt_path='~'${PWD##$HOME}
+    prompt_path='~'"${PWD##$HOME}"
   else
-    prompt_path=$PWD
+    prompt_path="$PWD"
   fi
 
   username=`whoami`
@@ -42,10 +44,6 @@ generate_dynamic_prompt() {
   prompt="$prompt %F{111}%#%f "
 
   echo -e "$prompt"
-
-  unset prompt_path
-  unset username
-  unset hostname
 }
 
 setopt PROMPT_SUBST
