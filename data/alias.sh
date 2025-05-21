@@ -5,7 +5,7 @@ alias mv='mv -i'	# prevent silent overwriting
 alias cp='cp -Rip'	# prevent silent overwriting
 alias list='ls -al | grep -v -e '\''\.swp$'\'' -e '\''^\.DS_Store$'\'' | sort -k1,1r -k9,9'
 alias today='echo 20$(date '\''+%y%m%d'\'')'
-alias cdreporoot='cd $(git rev-parse --show-toplevel)'
+alias cdr='cd $(git rev-parse --show-toplevel)'
 alias cdtemp='builtin cd /tmp && mkdir $(today); cd $(today)'
 alias gitlog='git log --all --graph --max-count=42 --oneline'
 alias gitlogall='git log --all --graph --oneline'
