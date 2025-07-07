@@ -5,15 +5,18 @@ alias mv='mv -i'	# prevent silent overwriting
 alias cp='cp -Rip'	# prevent silent overwriting
 alias list='ls -al | grep -v -e '\''\.swp$'\'' -e '\''^\.DS_Store$'\'' | sort -k1,1r -k9,9'
 alias today='echo 20$(date '\''+%y%m%d'\'')'
-alias cdr='cd $(git rev-parse --show-toplevel)'
-alias cdtemp='builtin cd /tmp && mkdir $(today); cd $(today)'
-alias gitlog='git log --all --graph --max-count=42 --oneline'
-alias gitlogall='git log --all --graph --oneline'
-alias gitd='git status && gitlog'
 alias diff='vimdiff'
 alias disklist='diskutil list'
 alias catleases='cat /private/var/db/dhcpd_leases'
+alias heredoc='cat << EOF >>'
+# cd
 alias cde='cd $ENVHOME'
+alias cdr='cd $(git rev-parse --show-toplevel)'
+alias cdtemp='builtin cd /tmp && mkdir $(today); cd $(today)'
+# git
+alias gitlog='git log --all --graph --max-count=42 --oneline'
+alias gitlogall='git log --all --graph --oneline'
+alias gitd='git status && gitlog'
 
 # a::command
 alias a='. $environment/bin/a'
@@ -33,6 +36,7 @@ alias vimrecord='vim $personal/.private/record.txt'
 alias vimdump='vim $private/dump.txt'
 alias vimalias='vim $environment/data/alias.sh'
 alias vimknownhosts='vim ~/.ssh/known_hosts'
+alias vimactivate='vim $environment/activate.sh'
 
 # function
 function cd() {

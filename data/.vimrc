@@ -143,6 +143,7 @@ nnoremap <F4><F4> <C-W>:qa!<CR>
 nnoremap <F5> :e<CR>
 nnoremap <F6> :args **/*.
 nnoremap <F7> :vimgrep // ##<CR>
+nnoremap <F7><F7> *:vimgrep <C-R><C-W> %<CR>:echo len(getqflist())<CR>
 nnoremap <F8> :argdo %s///0/g<CR>
 " nnoremap <F6> yiwbb/\<<C-R>"\><CR>
 " nnoremap <F6><F6> 0f(byiwbb/\<<C-R>"\><CR>
@@ -156,7 +157,7 @@ vnoremap <F9><F9> <ESC>:let @t=""<CR> :'<,'>g///y T<CR>
 nnoremap <F10> :argdo %s///0/ceg<CR>
 " nnoremap <F10> :set nomodifiable<CR>:set nowrite<CR>
 " nnoremap <F10><F10> :set modifiable<CR>:set write<CR>
-nnoremap <F12> :source ~/.vimrc<CR>
+nnoremap <F12> :source $environment/data/.vimrc<CR>
 " nnoremap <F6> ye:vimgrep <C-R>" ##<CR>:copen<CR>
 " nnoremap <F6> :args `find . -iname \*.\[hc\] -o -iname \*.\[hc\]pp`<CR>
 " nnoremap <F7> /<C-R><C-W><CR>N:vimgrep <C-R><C-W> ##<CR>:copen<CR>
@@ -200,9 +201,12 @@ let @e='"*y'
 " Without last space in the string ending with ^M, ^J is followed to register
 let @d=':r !date "+\%F \%a" '
 " copy file path to clipboard
-let @p=':let @+=expand("%:p") '
-let @h=':let @+=expand("%:p:h") '
-let @n=':let @+=expand("%:t") '
+"   realpath of current file
+let @p=':let @+=fnameescape(expand("%:p")) '
+"   realpath of parent
+let @h=':let @+=fnameescape(expand("%:p:h")) '
+"   file name
+let @n=':let @+=fnameescape(expand("%:t")) '
 
 "command
 :command! Removecomments %s/\/\/.*/

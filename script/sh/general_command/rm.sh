@@ -1,5 +1,5 @@
 if [ $# -ne 1 ]; then
-  echo 'usage : touch <file>'
+  echo 'usage : rm <file>'
   echo '  file is relative path from $shellscript'
   return 1
 fi

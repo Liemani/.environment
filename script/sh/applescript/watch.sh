@@ -8,7 +8,7 @@ fi
 echo 'Watching' $1
 
 while [[ $? == 0 ]]; do
-  sleep 1
+  sleep 10
   ps $1 >> /dev/null
 done
 
