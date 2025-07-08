@@ -5,4 +5,5 @@ if [ $# -lt 1 ]; then
   return 1
 fi
 
-a copy 요약해줘 `uv run $script/python/get_transcript.py "$1"`
+cd $script/python
+a copy 요약해줘 `uv run get_transcript.py "$1"`

@@ -13,7 +13,7 @@ a_command="$bin/$1"
 
 if [ -f "$a_command" ]; then
     shift
-    . "$a_command" "$@"
+    $SHELL "$a_command" "$@"
 else
     >&2 echo "a: There is no a_command [$1]"
 fi

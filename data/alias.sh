@@ -19,7 +19,6 @@ alias gitlogall='git log --all --graph --oneline'
 alias gitd='git status && gitlog'
 
 # a::command
-alias a='. $environment/bin/a'
 alias dump='a dump'
 alias record='a record'
 alias vim='a _vim'
