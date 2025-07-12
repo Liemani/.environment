@@ -83,6 +83,7 @@ color desert
 " if has ("syntax")
 " 	syntax on
 " endif
+:highlight CursorLine ctermbg=239
 
 set listchars=eol:$,space:_,tab:\|.,trail:_
 " "eol", "extends", "precedes"
