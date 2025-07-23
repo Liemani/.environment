@@ -1,1 +1,1 @@
-echo "alias a='. \$environment/bin/a'" >> $HOME/.zshenv
+echo "source \$environment/data/.shenv" >> $HOME/.zshenv
