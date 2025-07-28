@@ -133,17 +133,26 @@ cnoremap <C-D> <DEL>
 " nnoremap <F1> :Stdheader<CR>  " Automatically mapped by '~/.vim/plugin/stdheader.vim'
 " nnoremap <F1> :Stdheader<CR>gg<S-V>}zf
 " nnoremap <F1><F1> gg<S-V>}zf
+" hight word without scroll
 nnoremap <F1> "tyiwbb/\C\<<C-R>t\><CR>
 nnoremap <F2> :Explore<CR>
 nnoremap <F2><F2> :e %:r.h<CR>
 nnoremap <F2><F2><F2> :e %:r.cpp<CR>
 nnoremap <F3> :mksession! $repo_root/.vimsession<CR>
 nnoremap <F3><F3> :mksession! $private/.vimsession/
+" quit current buffer
 nnoremap <F4> :q<CR>
+" quit all buffers
 nnoremap <F4><F4> <C-W>:qa!<CR>
+" reload current buffer
 nnoremap <F5> :e<CR>
+" load files
 nnoremap <F6> :args **/*.
-nnoremap <F7> :vimgrep // ##<CR>
+" grep last searched item in all the child files and update quickfix list
+nnoremap <F7> :cgetexpr systemlist("grep -rn '/' .")<CR>:copen<CR>
+" grep last search in all the argument list
+" nnoremap <F7> :vimgrep // ##<CR>
+" grep the word on the cursor in the current file
 nnoremap <F7><F7> *:vimgrep <C-R><C-W> %<CR>:echo len(getqflist())<CR>
 nnoremap <F8> :argdo %s///0/g<CR>
 " nnoremap <F6> yiwbb/\<<C-R>"\><CR>

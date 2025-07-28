@@ -23,7 +23,8 @@ alias gitd='git status && gitlog'
 alias dump='a dump'
 alias record='a record'
 alias vim='a _vim'
-# alias vs='a vimsession'
+alias vimregister='vim $ENVHOME/0_areas/work_note/register.txt'
+alias vs='a vimsession'
 alias ed='ed -p "command > "'
 
 ## script
