@@ -133,38 +133,43 @@ cnoremap <C-D> <DEL>
 " nnoremap <F1> :Stdheader<CR>  " Automatically mapped by '~/.vim/plugin/stdheader.vim'
 " nnoremap <F1> :Stdheader<CR>gg<S-V>}zf
 " nnoremap <F1><F1> gg<S-V>}zf
-" hight word without scroll
+" highlight word on the cursor without scroll
 nnoremap <F1> "tyiwbb/\C\<<C-R>t\><CR>
+" netrw
 nnoremap <F2> :Explore<CR>
+" jump to .h file of same name
 nnoremap <F2><F2> :e %:r.h<CR>
+" jump to .cpp file of same name
 nnoremap <F2><F2><F2> :e %:r.cpp<CR>
+" make vimsession at project root
 nnoremap <F3> :mksession! $repo_root/.vimsession<CR>
+" make vimsession with desired name
 nnoremap <F3><F3> :mksession! $private/.vimsession/
-" quit current buffer
+" quit
 nnoremap <F4> :q<CR>
-" quit all buffers
+" quit all buffers without write
 nnoremap <F4><F4> <C-W>:qa!<CR>
-" reload current buffer
+" reload current window
 nnoremap <F5> :e<CR>
-" load files
+" load files to args with desired extension
 nnoremap <F6> :args **/*.
 " grep last searched item in all the child files and update quickfix list
-nnoremap <F7> :cgetexpr systemlist("grep -rn '/' .")<CR>:copen<CR>
+nnoremap <F7> :cgetexpr systemlist("grep -rn --binary-files=without-match --exclude=tags '<C-R>/'")<CR>:copen<CR>
 " grep last search in all the argument list
 " nnoremap <F7> :vimgrep // ##<CR>
 " grep the word on the cursor in the current file
 nnoremap <F7><F7> *:vimgrep <C-R><C-W> %<CR>:echo len(getqflist())<CR>
-nnoremap <F8> :argdo %s///0/g<CR>
+"" replace all "/ to "0
+nnoremap <F8> :argdo %s/<C-R>//<C-R>0/ceg<CR>
+nnoremap <F8><F8> :argdo %s/<C-R>//<C-R>0/g<CR>
 " nnoremap <F6> yiwbb/\<<C-R>"\><CR>
 " nnoremap <F6><F6> 0f(byiwbb/\<<C-R>"\><CR>
 "" target files to arg list
 " nnoremap <F9> :set list!<CR>
-"" store grep to 't'
-nnoremap <F9> :let @t=""<CR> :g///y T<CR>
-vnoremap <F9><F9> <ESC>:let @t=""<CR> :'<,'>g///y T<CR>
+"" store grep to @"
+nnoremap <F9> :let @t=""<CR> :g/<C-R>//y T<CR>
+vnoremap <F9><F9> <ESC>:let @t=""<CR> :'<,'>g/<C-R>//y T<CR>
 "" search "/ all arg list
-"" replace all "/ to "0
-nnoremap <F10> :argdo %s///0/ceg<CR>
 " nnoremap <F10> :set nomodifiable<CR>:set nowrite<CR>
 " nnoremap <F10><F10> :set modifiable<CR>:set write<CR>
 nnoremap <F12> :source $environment/data/.vimrc<CR>
@@ -183,6 +188,14 @@ nnoremap <C-H> <C-W><C-H><C-W>\|
 nnoremap <C-J> <C-W><C-J><C-W>_
 nnoremap <C-K> <C-W><C-K><C-W>_
 nnoremap <C-L> <C-W><C-L><C-W>\|
+
+let mapleader='\'
+" Without last space in the string ending with ^M, ^J is followed to register
+" let @d=':r !date "+\%F \%a" '
+" nnoremap <leader>d j0i<C-R>=system('date "+%F %a"')<CR><ESC>k$
+nnoremap <leader>d o<C-R>=substitute(system('date "+%F %a"'), '\n\+$', '', '')<CR><ESC>
+" add todo comment
+nnoremap <leader>t o// TODO implement<ESC>
 
 " Tab move
 " nnoremap GT gT
@@ -208,8 +221,6 @@ let @q=':let @t=''/''/{zf%/tj'
 " fold 42header
 " let @w=':13,$foldo!'
 let @e='"*y'
-" Without last space in the string ending with ^M, ^J is followed to register
-let @d=':r !date "+\%F \%a" '
 " copy file path to clipboard
 "   realpath of current file
 let @p=':let @+=fnameescape(expand("%:p")) '
