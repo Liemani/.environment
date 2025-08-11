@@ -154,7 +154,7 @@ nnoremap <F5> :e<CR>
 " load files to args with desired extension
 nnoremap <F6> :args **/*.
 " grep last searched item in all the child files and update quickfix list
-nnoremap <F7> :cgetexpr systemlist("grep -rn --binary-files=without-match --exclude=tags '<C-R>/'")<CR>:copen<CR>
+nnoremap <F7> :cgetexpr systemlist("grep -rn --binary-files=without-match --exclude=tags '<C-R>/'")<CR>
 " grep last search in all the argument list
 " nnoremap <F7> :vimgrep // ##<CR>
 " grep the word on the cursor in the current file
@@ -193,9 +193,11 @@ let mapleader='\'
 " Without last space in the string ending with ^M, ^J is followed to register
 " let @d=':r !date "+\%F \%a" '
 " nnoremap <leader>d j0i<C-R>=system('date "+%F %a"')<CR><ESC>k$
-nnoremap <leader>d o<C-R>=substitute(system('date "+%F %a"'), '\n\+$', '', '')<CR><ESC>
+" nnoremap <leader>d o<C-R>=substitute(system('date "+%F %a"'), '\n\+$', '', '')<CR><ESC>
+nnoremap <leader>d :put =substitute(system('date \"+%F %a\"'), '\n\+$', '', '')<CR>
 " add todo comment
-nnoremap <leader>t o// TODO implement<ESC>
+" nnoremap <leader>t o// TODO implement<ESC>
+nnoremap <leader>t :put ='// TODO implement'<CR>
 
 " Tab move
 " nnoremap GT gT

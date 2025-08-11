@@ -15,7 +15,16 @@ alias cde='cd $ENVHOME'
 alias cdr='cd $(git rev-parse --show-toplevel)'
 alias cdtemp='mkdir /tmp/$(today); cd /tmp/$(today)'
 # git
-alias gitlog='git log --all --graph --max-count=42 --oneline'
+# alias gitlog='git log --all --graph --max-count=42 --oneline'
+# alias gitlog='git log --all --graph --max-count=42 --decorate --pretty=format:"%C(yellow)%h %C(cyan)%<(6,trunc)%an %C(green)%ad %Creset%s" --date=short'
+# alias gitlog='git log --all --graph --max-count=42 \
+#   --decorate=short --color=always \
+#   --pretty=format:"%C(yellow)%h %C(magenta)%d %C(cyan)%<(6,trunc)%an %C(green)%ad %Creset%s" \
+#   --date=short'
+alias gitlog='git log --all --graph --max-count=42 --pretty=format:"%C(auto)%h%d %C(magenta)<%<(6,trunc)%an> %C(dim white)%ad %C(reset)%s" --date=short'
+
+
+
 alias gitlogall='git log --all --graph --oneline'
 alias gitd='git status && gitlog'
 
