@@ -222,7 +222,10 @@ vnoremap ? :norm xx<CR>
 let @q=':let @t=''/''/{zf%/tj'
 " fold 42header
 " let @w=':13,$foldo!'
+" copy selection to clipboard
 let @e='"*y'
+" copy line to clipboard
+let @r=':let @+=getline(".") '
 " copy file path to clipboard
 "   realpath of current file
 let @p=':let @+=fnameescape(expand("%:p")) '

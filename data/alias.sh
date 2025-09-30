@@ -4,12 +4,12 @@ alias a='. $environment/bin/a'
 alias ls='ls -Ap1'
 alias mv='mv -i'	# prevent silent overwriting
 alias cp='cp -Rip'	# prevent silent overwriting
-alias list='ls -al | grep -v -e '\''\.swp$'\'' -e '\''^\.DS_Store$'\'' | sort -k1,1r -k9,9'
-alias today='echo 20$(date '\''+%y%m%d'\'')'
+# alias list='ls -al1 | grep -v -e '\''\.swp'\'' -e '\''\.DS_Store'\'' | sort -k1,1r -k9,9'
+alias list='ls -al | grep -v -e '\''\.DS_Store'\'' | sort -k1,1r -k9,9'
+alias today='echo $(date '\''+%C%y%m%d'\'')'
 alias disklist='diskutil list'
 alias catleases='cat /private/var/db/dhcpd_leases'
-alias heredoc='cat << EOF >>'
-alias gemini='builtin cd $ENVHOME/gemini && gemini'
+alias gemini='builtin cd $ENVHOME/3_archive/zz_gemini && command gemini'
 # cd
 alias cde='cd $ENVHOME'
 alias cdr='cd $(git rev-parse --show-toplevel)'
@@ -21,7 +21,7 @@ alias cdtemp='mkdir /tmp/$(today); cd /tmp/$(today)'
 #   --decorate=short --color=always \
 #   --pretty=format:"%C(yellow)%h %C(magenta)%d %C(cyan)%<(6,trunc)%an %C(green)%ad %Creset%s" \
 #   --date=short'
-alias gitlog='git log --all --graph --max-count=42 --pretty=format:"%C(auto)%h%d %C(magenta)<%<(6,trunc)%an> %C(dim white)%ad %C(reset)%s" --date=short'
+alias gitlog='git log --all --graph --max-count=42 --pretty=format:"%C(auto)%h%d %C(magenta)%<(6,trunc)%an %C(dim white)%ad %C(reset)%<(80,trunc)%s" --date=short'
 
 
 
@@ -32,7 +32,7 @@ alias gitd='git status && gitlog'
 alias dump='a dump'
 alias record='a record'
 alias vim='a _vim'
-alias vimregister='vim $ENVHOME/0_areas/work_note/register.txt'
+alias vimregister='vim $ENVHOME/1_area/work_note/register.txt'
 alias vs='a vimsession'
 alias ed='ed -p "command > "'
 

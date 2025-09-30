@@ -12,4 +12,4 @@ export environment=$ENVHOME/.environment
   export bin=$environment/bin
   export script=$environment/script
 export private=$ENVHOME/.private
-export playground=$ENVHOME/0_areas/playground
+export playground=$ENVHOME/1_area/playground

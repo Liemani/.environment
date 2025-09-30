@@ -26,6 +26,9 @@ generate_dynamic_prompt() {
 
   if [ -n "$git_root" ]; then
     prompt_path="${PWD##$git_root}"
+    if [ -z "" ]; then
+      prompt_path="/"
+    fi
   elif [[ "$PWD" == "$ENVHOME"* ]]; then
     prompt_path='$ENVHOME'"${PWD##$ENVHOME}"
   elif [[ "$PWD" == "$HOME"* ]]; then
@@ -37,11 +40,12 @@ generate_dynamic_prompt() {
   username=`whoami`
   hostname=`hostname -s`
 
-  prompt="%F{240}$(date "+%H:%M") %F{111}$username %F{12}$hostname %F{208}$git_repo$prompt_path"
+  prompt="%F{8}$(date "+%H:%M") %F{6}$username%F{8}@%F{4}$hostname %F{3}$prompt_path"
   if [ -n "$git_repo" ]; then
-    prompt="$prompt %F{246}(%F{34}$git_repo%F{246}/%F{34}$git_branch%F{246})"
+#    prompt="$prompt %F{7}(%F{2}$git_repo%F{7}/%F{2}$git_branch%F{7})"
+    prompt="$prompt %F{8}(%F{2}$git_repo%F{8}/%F{2}$git_branch%F{8})"
   fi
-  prompt="$prompt %F{111}%#%f "
+  prompt="$prompt %F{7}%#%f "
 
   echo -e "$prompt"
 }
