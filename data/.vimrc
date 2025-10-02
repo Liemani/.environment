@@ -142,7 +142,9 @@ nnoremap <F2><F2> :e %:r.h<CR>
 " jump to .cpp file of same name
 nnoremap <F2><F2><F2> :e %:r.cpp<CR>
 " make vimsession at project root
-nnoremap <F3> :mksession! $repo_root/.vimsession<CR>
+" nnoremap <F3> :mksession! $repo_local_path/.vimsession<CR>
+" make vimsession at private dir
+nnoremap <F3> :mksession! $private/.vimsession/$repo_local_name<CR>
 " make vimsession with desired name
 nnoremap <F3><F3> :mksession! $private/.vimsession/
 " quit

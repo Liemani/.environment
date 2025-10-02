@@ -20,13 +20,13 @@
 generate_dynamic_prompt() {
   PWD=$(realpath $PWD)
 
-  git_root=$(2>/dev/null git rev-parse --show-toplevel)
-  git_repo=$(2>/dev/null basename "$git_root")
+  repo_local_path=$(2>/dev/null git rev-parse --show-toplevel)
+  repo_local_name=$(2>/dev/null basename "$repo_local_path")
   git_branch=$(2>/dev/null git rev-parse --abbrev-ref HEAD)
 
-  if [ -n "$git_root" ]; then
-    prompt_path="${PWD##$git_root}"
-    if [ -z "" ]; then
+  if [ -n "$repo_local_path" ]; then
+    prompt_path="${PWD##$repo_local_path}"
+    if [ -z "$prompt_path" ]; then
       prompt_path="/"
     fi
   elif [[ "$PWD" == "$ENVHOME"* ]]; then
@@ -41,9 +41,9 @@ generate_dynamic_prompt() {
   hostname=`hostname -s`
 
   prompt="%F{8}$(date "+%H:%M") %F{6}$username%F{8}@%F{4}$hostname %F{3}$prompt_path"
-  if [ -n "$git_repo" ]; then
-#    prompt="$prompt %F{7}(%F{2}$git_repo%F{7}/%F{2}$git_branch%F{7})"
-    prompt="$prompt %F{8}(%F{2}$git_repo%F{8}/%F{2}$git_branch%F{8})"
+  if [ -n "$repo_local_name" ]; then
+#    prompt="$prompt %F{7}(%F{2}$repo_local_name%F{7}/%F{2}$git_branch%F{7})"
+    prompt="$prompt %F{8}(%F{2}$repo_local_name%F{8}/%F{2}$git_branch%F{8})"
   fi
   prompt="$prompt %F{7}%#%f "
 
