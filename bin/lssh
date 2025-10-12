@@ -1,1 +1,1 @@
-../script/sh/custom_command/lssh.sh
+ls $env/script/sh

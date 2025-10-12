@@ -1,1 +1,1 @@
-../script/sh/general_command/ls.sh
+ls $@ "$bin"

@@ -1,5 +1,5 @@
 # general command
-alias a='. $environment/bin/a'
+alias a='. $bin/a'
 # alias ls='ls -Ap1 --color'
 alias ls='ls -Ap1'
 alias mv='mv -i'	# prevent silent overwriting

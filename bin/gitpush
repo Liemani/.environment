@@ -1,1 +1,7 @@
-../script/sh/git/gitpush.sh
+if [ $# -ge 2 ]; then
+    echo 'usage : gitpush [<commit message>]'
+    return 1
+fi
+
+. $bin/a gitcommit "$@"
+git push

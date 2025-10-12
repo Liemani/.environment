@@ -1,1 +1,13 @@
-../script/sh/foundation/a.sh
+if [ "$1" = 'a' ]; then
+  >&2 echo 'a : [a] as a_command is forbidden.'
+  return 1
+elif [ $# -eq 0 ]; then
+  >&2 echo 'usage : a <a_command> <arguments>'
+  >&2 a ls
+  return 1
+fi
+
+0="$1"
+shift
+
+$SHELL "$bin/$0" "$@"

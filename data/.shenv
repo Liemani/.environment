@@ -1,3 +1,0 @@
-# alias list for the child shell (run in not-interactive mode ) of interactive shell
-
-alias a='. $environment/bin/a'

@@ -1,1 +1,17 @@
-../script/sh/git/gitstatusall.sh
+if [ $# -ne 0 ]; then
+    echo 'usage : gitstatusall'
+    return 1
+fi
+
+oldpwd=$PWD
+
+
+
+cd $personal
+. $bin/a gitstatus $(ls)
+
+
+
+cd $oldpwd
+
+unset oldpwd
