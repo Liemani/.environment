@@ -200,6 +200,21 @@ nnoremap <leader>d :put =substitute(system('date \"+%F %a\"'), '\n\+$', '', '')<
 " add todo comment
 " nnoremap <leader>t o// TODO implement<ESC>
 nnoremap <leader>t :put ='// TODO implement'<CR>
+" copy file path to clipboard
+"   realpath of current file
+nnoremap <leader>fp :let @+=fnameescape(expand("%:p"))<CR>
+"   realpath of parent
+nnoremap <leader>dp :let @+=fnameescape(expand("%:p:h"))<CR>
+"   directory name
+nnoremap <leader>dn :let @+=fnameescape(expand("%:p:h:t"))<CR>
+"   file name
+nnoremap <leader>fn :let @+=fnameescape(expand("%:t"))<CR>
+" copy selection to clipboard
+noremap <leader>y "*y
+" copy line to clipboard
+nnoremap <leader>yy :let @+=getline(".")<CR>
+" fold from cursor to match pair and jump to next function open in c
+nnoremap <leader>zf /{<CR>zf%j
 
 " Tab move
 " nnoremap GT gT
@@ -221,20 +236,20 @@ vnoremap ? :norm xx<CR>
 " fold from cursor to match pair and jump to next function open in c
 " let @q='][va{zf}'
 " let @q=':let @t=''/''/(v%f{%zf/tj'
-let @q=':let @t=''/''/{zf%/tj'
+" let @q=':let @t=''/''/{zf%/tj'
 " fold 42header
 " let @w=':13,$foldo!'
 " copy selection to clipboard
-let @e='"*y'
+" let @e='"*y'
 " copy line to clipboard
-let @r=':let @+=getline(".") '
+" let @r=':let @+=getline(".") '
 " copy file path to clipboard
 "   realpath of current file
-let @p=':let @+=fnameescape(expand("%:p")) '
+" let @p=':let @+=fnameescape(expand("%:p")) '
 "   realpath of parent
-let @h=':let @+=fnameescape(expand("%:p:h")) '
+" let @h=':let @+=fnameescape(expand("%:p:h")) '
 "   file name
-let @n=':let @+=fnameescape(expand("%:t")) '
+" let @n=':let @+=fnameescape(expand("%:t")) '
 
 "command
 :command! Removecomments %s/\/\/.*/
