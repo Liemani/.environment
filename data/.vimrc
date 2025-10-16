@@ -210,7 +210,7 @@ nnoremap <leader>dn :let @+=fnameescape(expand("%:p:h:t"))<CR>
 "   file name
 nnoremap <leader>fn :let @+=fnameescape(expand("%:t"))<CR>
 " copy selection to clipboard
-noremap <leader>y "*y
+vnoremap <leader>y "*y
 " copy line to clipboard
 nnoremap <leader>yy :let @+=getline(".")<CR>
 " fold from cursor to match pair and jump to next function open in c

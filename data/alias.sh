@@ -1,5 +1,5 @@
 # general command
-alias a='. $bin/a'
+# alias a='$environment/bin/a'
 # alias ls='ls -Ap1 --color'
 alias ls='ls -Ap1'
 alias mv='mv -i'	# prevent silent overwriting
@@ -45,6 +45,7 @@ alias vimgitignore='vim $environment/data/.gitignore'
 alias vimrecord='vim $personal/.private/record.txt'
 alias vimdump='vim $private/dump.txt'
 alias vimalias='vim $environment/data/alias.sh'
+alias vimpath='vim $environment/data/path.sh'
 alias vimknownhosts='vim ~/.ssh/known_hosts'
 alias vimactivate='vim $environment/activate.sh'
 

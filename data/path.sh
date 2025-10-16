@@ -9,7 +9,8 @@ fi
 
 export derivedData=$HOME/Library/Developer/Xcode/DerivedData
 export environment=$ENVHOME/.environment
-  export bin=$environment/bin
   export script=$environment/script
 export private=$ENVHOME/.private
 export playground=$ENVHOME/1_area/playground
+
+export A_PATH=$private/a_bin:$environment/a_bin

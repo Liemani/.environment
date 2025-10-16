@@ -2,6 +2,8 @@
 # source additional activate script
 # source shell specific scripts
 
+PATH=$PATH:$environment/bin
+
 . $environment/data/variable.sh
 . $environment/data/alias.sh
 . $environment/data/rc.sh

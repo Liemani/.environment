@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# list a command
+
+for p in $(echo $A_PATH | tr ':' '\n'); do
+  if [ -d "$p" ]; then
+    ls $@ "$p"
+  fi
+done

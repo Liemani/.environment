@@ -7,4 +7,4 @@ if [ $# -ne 1 ]; then
   exit 1
 fi
 
-find . -name "*.$1" -exec echo catall {}: \; -exec cat {} \; -exec echo \;
+find . -name "*.$1" -exec echo catall {}: \; -exec cat {} \; -exec echo \; | less -p "^catall"

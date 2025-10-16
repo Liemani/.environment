@@ -1,13 +1,23 @@
+#!/bin/bash
+
+# entry of a command
+# run a command
+
 if [ "$1" = 'a' ]; then
   >&2 echo 'a : [a] as a_command is forbidden.'
-  return 1
+  exit 1
 elif [ $# -eq 0 ]; then
   >&2 echo 'usage : a <a_command> <arguments>'
   >&2 a ls
-  return 1
+  exit 1
 fi
 
-0="$1"
+command="$1"
 shift
 
-$SHELL "$bin/$0" "$@"
+for p in $(echo $A_PATH | tr ':' '\n'); do
+  if [ -x "$p/$command" ]; then
+    "$p/$command" "$@"
+    break
+  fi
+done
