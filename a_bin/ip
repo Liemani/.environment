@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# show public ip
+
+curl ifconfig.me

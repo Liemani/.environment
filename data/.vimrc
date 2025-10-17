@@ -202,13 +202,13 @@ nnoremap <leader>d :put =substitute(system('date \"+%F %a\"'), '\n\+$', '', '')<
 nnoremap <leader>t :put ='// TODO implement'<CR>
 " copy file path to clipboard
 "   realpath of current file
-nnoremap <leader>fp :let @+=fnameescape(expand("%:p"))<CR>
+nnoremap <leader>yfp :let @+=fnameescape(expand("%:p"))<CR>
 "   realpath of parent
-nnoremap <leader>dp :let @+=fnameescape(expand("%:p:h"))<CR>
+nnoremap <leader>ydp :let @+=fnameescape(expand("%:p:h"))<CR>
 "   directory name
-nnoremap <leader>dn :let @+=fnameescape(expand("%:p:h:t"))<CR>
+nnoremap <leader>ydn :let @+=fnameescape(expand("%:p:h:t"))<CR>
 "   file name
-nnoremap <leader>fn :let @+=fnameescape(expand("%:t"))<CR>
+nnoremap <leader>yfn :let @+=fnameescape(expand("%:t"))<CR>
 " copy selection to clipboard
 vnoremap <leader>y "*y
 " copy line to clipboard
