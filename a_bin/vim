@@ -19,8 +19,13 @@ for p in $(echo $A_PATH | tr ':' '\n'); do
 done
 
 if [ "$found" = false ]; then
-  first_path=$(echo "$A_PATH" | tr ':' '\n' | sed -n '1p')
-  cd $first_path
-  vim "$first_path/$1"
-  chmod +x "$first_path/$1"
+  {
+    printf '#!/bin/bash\n'
+    printf '\n'
+    printf '\n'
+  } > "$private_a_bin/$1"
+  chmod +x "$private_a_bin/$1"
+
+  cd $private_a_bin
+  vim "$private_a_bin/$1"
 fi

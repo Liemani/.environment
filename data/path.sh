@@ -13,4 +13,7 @@ export environment=$ENVHOME/.environment
 export private=$ENVHOME/.private
 export playground=$ENVHOME/1_area/playground
 
-export A_PATH=$private/a_bin:$environment/a_bin
+export private_a_bin=$private/a_bin
+export environment_a_bin=$environment/a_bin
+
+export A_PATH=$private_a_bin:$environment_a_bin

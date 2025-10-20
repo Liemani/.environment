@@ -5,7 +5,4 @@ if [ $# -ne 1 ]; then
   exit 1
 fi
 
-first_path=$(echo "$A_PATH" | tr ':' '\n' | sed -n '1p')
-second_path=$(echo "$A_PATH" | tr ':' '\n' | sed -n '2p')
-
-mv "$first_path/$1" "$second_path/$1"
+mv "$private_a_bin/$1" "$environment_a_bin/$1"

@@ -49,6 +49,7 @@ alias vimknownhosts='vim ~/.ssh/known_hosts'
 alias vimactivate='vim $environment/activate.sh'
 alias vimregister='vim $ENVHOME/1_area/work_note/register.txt'
 alias vima='vim $environment/bin/a'
+alias vimsshconfig='vim /Users/bagjeonghun/.ssh/config'
 
 # function
 function cd() {
