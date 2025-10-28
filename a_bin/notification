@@ -1,7 +1,7 @@
 if [[ $# -eq 0 ]]; then
-  1=alert
 #   echo 'usage : notification <message>'
 #   return 1
+  osascript -e "display notification alert"
 fi
 
 osascript -e "display notification \"$*\""

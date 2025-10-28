@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# remove a command
+# remove a_command
 
 for p in $(echo $A_PATH | tr ':' '\n'); do
   if [ -x "$p/$1" ]; then

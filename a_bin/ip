@@ -1,5 +1,6 @@
 #!/bin/bash
 
-# show public ip
+# print public ip
 
 curl ifconfig.me
+printf "\n"

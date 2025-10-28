@@ -135,18 +135,14 @@ cnoremap <C-D> <DEL>
 " nnoremap <F1><F1> gg<S-V>}zf
 " highlight word on the cursor without scroll
 nnoremap <F1> "tyiwbb/\C\<<C-R>t\><CR>
-" netrw
-nnoremap <F2> :Explore<CR>
-" jump to .h file of same name
-nnoremap <F2><F2> :e %:r.h<CR>
-" jump to .cpp file of same name
-nnoremap <F2><F2><F2> :e %:r.cpp<CR>
 " make vimsession at project root
 " nnoremap <F3> :mksession! $repo_local_path/.vimsession<CR>
 " make vimsession at private dir
-nnoremap <F3> :mksession! $private/.vimsession/$repo_local_name<CR>
+nnoremap <F2> :mksession! $private/.vimsession/$repo_local_name<CR>
 " make vimsession with desired name
-nnoremap <F3><F3> :mksession! $private/.vimsession/
+nnoremap <F2><F2> :mksession! $private/.vimsession/
+" load vimrc
+nnoremap <F3> :source $environment/data/.vimrc<CR>
 " quit
 nnoremap <F4> :q<CR>
 " quit all buffers without write
@@ -174,7 +170,6 @@ vnoremap <F9><F9> <ESC>:let @t=""<CR> :'<,'>g/<C-R>//y T<CR>
 "" search "/ all arg list
 " nnoremap <F10> :set nomodifiable<CR>:set nowrite<CR>
 " nnoremap <F10><F10> :set modifiable<CR>:set write<CR>
-nnoremap <F12> :source $environment/data/.vimrc<CR>
 " nnoremap <F6> ye:vimgrep <C-R>" ##<CR>:copen<CR>
 " nnoremap <F6> :args `find . -iname \*.\[hc\] -o -iname \*.\[hc\]pp`<CR>
 " nnoremap <F7> /<C-R><C-W><CR>N:vimgrep <C-R><C-W> ##<CR>:copen<CR>
@@ -191,7 +186,7 @@ nnoremap <C-J> <C-W><C-J><C-W>_
 nnoremap <C-K> <C-W><C-K><C-W>_
 nnoremap <C-L> <C-W><C-L><C-W>\|
 
-let mapleader='\'
+let mapleader=' '
 " Without last space in the string ending with ^M, ^J is followed to register
 " let @d=':r !date "+\%F \%a" '
 " nnoremap <leader>d j0i<C-R>=system('date "+%F %a"')<CR><ESC>k$
@@ -209,12 +204,22 @@ nnoremap <leader>ydp :let @+=fnameescape(expand("%:p:h"))<CR>
 nnoremap <leader>ydn :let @+=fnameescape(expand("%:p:h:t"))<CR>
 "   file name
 nnoremap <leader>yfn :let @+=fnameescape(expand("%:t"))<CR>
-" copy selection to clipboard
-vnoremap <leader>y "*y
+" copy motion to clipboard
+noremap <leader>y "*y
 " copy line to clipboard
-nnoremap <leader>yy :let @+=getline(".")<CR>
+nnoremap <leader>yy "*yy
+" delete and copy motion to clipboard
+noremap <leader>d "*d
+" delete and copy line to clipboard
+nnoremap <leader>dd "*dd
 " fold from cursor to match pair and jump to next function open in c
 nnoremap <leader>zf /{<CR>zf%j
+" netrw
+nnoremap <leader>e :Explore<CR>
+" jump to .h file of same name
+nnoremap <leader>ee :e %:r.h<CR>
+" jump to .cpp file of same name
+nnoremap <leader>eee :e %:r.cpp<CR>
 
 " Tab move
 " nnoremap GT gT
@@ -229,6 +234,7 @@ nnoremap <leader>zf /{<CR>zf%j
 vnoremap / :norm i//<CR>
 vnoremap # :norm i# <CR>
 vnoremap ? :norm xx<CR>
+vnoremap * :norm i/*A */
 "------------------------------------------------------------
 " Macros
 " jump to top and to next window
