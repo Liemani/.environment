@@ -6,4 +6,4 @@ if [ $# -lt 1 ]; then
 fi
 
 cd $script/python
-. $bin/a copy 요약해줘 `uv run get_transcript.py "$1"`
+a copy 요약해줘 `uv run get_transcript.py "$1"`

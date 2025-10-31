@@ -191,7 +191,7 @@ let mapleader=' '
 " let @d=':r !date "+\%F \%a" '
 " nnoremap <leader>d j0i<C-R>=system('date "+%F %a"')<CR><ESC>k$
 " nnoremap <leader>d o<C-R>=substitute(system('date "+%F %a"'), '\n\+$', '', '')<CR><ESC>
-nnoremap <leader>d :put =substitute(system('date \"+%F %a\"'), '\n\+$', '', '')<CR>
+nnoremap <leader>g :put =substitute(system('date \"+%F %a\"'), '\n\+$', '', '')<CR>
 " add todo comment
 " nnoremap <leader>t o// TODO implement<ESC>
 nnoremap <leader>t :put ='// TODO implement'<CR>

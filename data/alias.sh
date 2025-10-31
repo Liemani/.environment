@@ -2,6 +2,7 @@
 # alias a='$environment/bin/a'
 # alias ls='ls -Ap1 --color'
 alias ls='ls -Ap1'
+alias lsvs='ls -al $private/.vimsession'
 alias mv='mv -i'	# prevent silent overwriting
 alias cp='cp -Rip'	# prevent silent overwriting
 # alias list='ls -al1 | grep -v -e '\''\.swp'\'' -e '\''\.DS_Store'\'' | sort -k1,1r -k9,9'
@@ -39,6 +40,7 @@ alias ed='ed -p "command > "'
 alias shrc='. $HOME/.'"$shell"'rc'
 
 ## vim
+alias vimbashrc='vim $environment/data/.bashrc'
 alias vimvimrc='vim $environment/data/.vimrc'
 alias vimgitignore='vim $environment/data/.gitignore'
 alias vimrecord='vim $personal/.private/record.txt'

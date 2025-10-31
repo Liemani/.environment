@@ -8,7 +8,7 @@ oldpwd=$PWD
 
 
 cd $personal
-. $bin/a gitstatus $(ls)
+a gitstatus $(ls)
 
 
 
