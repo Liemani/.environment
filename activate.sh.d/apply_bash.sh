@@ -28,7 +28,7 @@ generate_dynamic_prompt() {
   username=`whoami`
   hostname=`hostname -s`
 
-  prompt="$(date "+%H:%M") $username@$hostname $repo_local_name$prompt_path"
+  prompt="$(date "+%H:%M") $username@$hostname $prompt_path"
   if [ -n "$repo_local_name" ]; then
     prompt="$prompt ($repo_local_name/$git_branch)"
   fi

@@ -1,14 +1,19 @@
-### prologue
+## prologue
 
 I recommand using this program on new environment not old. And `backup` aux command's uniformed commit message makes hard differentiating your commits. So I recommand to use this program for backup purpose of repository which is don't need to record the change log or version.
 
 
+## File structure
 
-## Environment Managent Program
+```
+$ENVHOME/
+| .private/
+| .environment/
+```
 
-### How to use
+## How to use
 
-1. cd to `ENVHOME` where you want to be environment home
+1. cd to `$ENVHOME` where you want to be environment home
 
 ```
 ENVHOME=environment/home/path
@@ -37,7 +42,7 @@ $SHELL .environment/setup.sh
 source $ENVHOME/activate.sh
 ```
 
-### Usage of `a`
+## Usage of `a`
 
 ```
 a <a_command> [<arguments>]
@@ -45,11 +50,11 @@ a <a_command> [<arguments>]
 
 command `a` run `a_command` in $env/bin
 
-#### endcode
+## endcode
 
-##### the compilation system concept
+#### the compilation system concept
 
-###### file flow
+##### file flow
 
 - source program(text)
 - modified source program(text)
@@ -57,35 +62,35 @@ command `a` run `a_command` in $env/bin
 - relocatable object programs(binary)
 - executable object program(binary)
 
-###### processor flow
+##### processor flow
 
 - preprocessor(cpp)
 - compiler(cc1)
 - assembler(as)
 - linker(ld)
 
-##### file
+#### file
 
-###### files
+##### files
 
 - gcc_x.sh
 
 - g++_x.sh
 - g++_
 
-###### gcc_x.sh
+##### gcc_x.sh
 
 - generate from c file to executable x86_64 architecture program
 
-###### compile.sh
+##### compile.sh
 
 - generate from c file to assembly program
 
-###### g++_x.sh
+##### g++_x.sh
 
 - generate from c++ file to executable x86_64 architecture program
 
-### Features
+## Features
 
 - Target : macOS::zsh, ::bash, Alpine Linux::ash
 - Liemani's `.shrc`
@@ -94,14 +99,14 @@ command `a` run `a_command` in $env/bin
 - Liemani's prompt
 - Liemani's `a` command
 
-### Deep Features
+## Deep Features
 
-#### vim
+### vim
 
 - all `vim` command call `a _vim`, and `_vim` call `command vim`
   - `vim (aliased)` -> `_vim.sh` -> `command vim`
 
-#### Directory Structure
+### Directory Structure
 
 `bin/`: Executable files. Used as `a_command`
 `copy_source/`: Files are copied when execute `set_env.sh`
