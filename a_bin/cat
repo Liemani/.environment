@@ -1,0 +1,11 @@
+#!/bin/bash
+# cat filename:lineno
+
+if [ "$#" -ne 1 ]; then
+  echo "Usage: $0 filename:lineno"
+  exit 1
+fi
+
+IFS=: read -r file lineno <<< "$1"
+
+sed -n $lineno'p' $file

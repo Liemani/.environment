@@ -2,7 +2,7 @@
 # alias a='$environment/bin/a'
 # alias ls='ls -Ap1 --color'
 alias ls='ls -Ap1'
-alias lsvs='ls -al $private/.vimsession'
+alias lsvs='ls $private/.vimsession'
 alias mv='mv -i'	# prevent silent overwriting
 alias cp='cp -Rip'	# prevent silent overwriting
 # alias list='ls -al1 | grep -v -e '\''\.swp'\'' -e '\''\.DS_Store'\'' | sort -k1,1r -k9,9'
