@@ -100,8 +100,8 @@ set hlsearch
 set autowrite " Is this work??
 
 " Split
-set splitright
-set splitbelow
+" set splitright
+" set splitbelow
 
 " can move cursor to empty position when block mode
 " cons : it select empty space as space character

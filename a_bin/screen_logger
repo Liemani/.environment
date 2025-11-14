@@ -1,13 +1,21 @@
-# under construct
+#!/bin/bash
+
 # log screen for every 10 minutes
+
+
+
+printf "under construction"
+exit 1
+
+
 
 screencapture -Cm /Volumes/mac/4_storage/storage/screen_log/$(date '+%C%y%m%d%H%M%S').png
 
-# 저장할 경로
 SAVE_DIR="/Volumes/mac/4_storage/storage/screen_log"
 
-# 저장 경로 없으면 생성
-mkdir -p "$SAVE_DIR"
+if [ ! -d "$SAVE_DIR" ]; then
+  mkdir -p "$SAVE_DIR"
+fi
 
 while true
 do

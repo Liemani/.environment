@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # print Wi-Fi IP address (works on macOS and Linux)
 
 if command -v networksetup >/dev/null 2>&1; then

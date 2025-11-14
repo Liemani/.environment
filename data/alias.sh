@@ -9,7 +9,6 @@ alias cp='cp -Rip'	# prevent silent overwriting
 alias list='ls -al | grep -v -e '\''\.DS_Store'\'' | sort -k1,1r -k9,9'
 alias today='echo $(date '\''+%C%y%m%d'\'')'
 alias disklist='diskutil list'
-alias catleases='cat /private/var/db/dhcpd_leases'
 alias gemini='builtin cd $ENVHOME/3_archive/zz_gemini && command gemini'
 # cd
 alias cde='cd $ENVHOME'
@@ -39,6 +38,10 @@ alias ed='ed -p "command > "'
 ## script
 alias shrc='. $HOME/.'"$shell"'rc'
 
+## cat
+alias catleases='cat /private/var/db/dhcpd_leases'
+alias cathosts='sudo cat /etc/hosts'
+
 ## vim
 alias vimbashrc='vim $environment/data/.bashrc'
 alias vimvimrc='vim $environment/data/.vimrc'
@@ -52,6 +55,7 @@ alias vimactivate='vim $environment/activate.sh'
 alias vimregister='vim $ENVHOME/1_area/work_note/register.txt'
 alias vima='vim $environment/bin/a'
 alias vimsshconfig='vim /Users/bagjeonghun/.ssh/config'
+alias vimhosts='sudo vim /etc/hosts'
 
 # function
 function cd() {
