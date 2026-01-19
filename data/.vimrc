@@ -206,12 +206,8 @@ nnoremap <leader>ydn :let @+=fnameescape(expand("%:p:h:t"))<CR>
 nnoremap <leader>yfn :let @+=fnameescape(expand("%:t"))<CR>
 " copy motion to clipboard
 noremap <leader>y "*y
-" copy line to clipboard
-nnoremap <leader>yy "*yy
 " delete and copy motion to clipboard
 noremap <leader>d "*d
-" delete and copy line to clipboard
-nnoremap <leader>dd "*dd
 " fold from cursor to match pair and jump to next function open in c
 nnoremap <leader>zf /{<CR>zf%j
 " netrw
@@ -220,6 +216,9 @@ nnoremap <leader>e :Explore<CR>
 nnoremap <leader>ee :e %:r.h<CR>
 " jump to .cpp file of same name
 nnoremap <leader>eee :e %:r.cpp<CR>
+" log selected range
+vnoremap <leader>l :!$environment/script/vim/append_timestamp2log.sh<CR>
+nnoremap <leader>ll V:!$environment/script/vim/append_timestamp2log.sh<CR>
 
 " Tab move
 " nnoremap GT gT

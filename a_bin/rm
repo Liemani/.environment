@@ -2,9 +2,17 @@
 
 # remove a_command
 
+isRemoved=false
+
 for p in $(echo $A_PATH | tr ':' '\n'); do
   if [ -x "$p/$1" ]; then
     rm "$p/$1"
+    isRemoved=true
     break
   fi
 done
+
+if [ $isRemoved = false ]; then
+  echo "a_rm: $1: No such file or directory"
+  exit 1
+fi

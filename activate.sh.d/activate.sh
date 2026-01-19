@@ -15,6 +15,9 @@ fi
 unset apply_sh_script
 
 # prevent ctrl-s from suspending
-stty -ixon
-autoload compinit
-compinit
+
+if [[ $SHELL =~ .*/zsh ]]; then
+  stty -ixon
+  autoload compinit
+  compinit
+fi

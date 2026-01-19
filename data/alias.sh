@@ -7,7 +7,8 @@ alias mv='mv -i'	# prevent silent overwriting
 alias cp='cp -Rip'	# prevent silent overwriting
 # alias list='ls -al1 | grep -v -e '\''\.swp'\'' -e '\''\.DS_Store'\'' | sort -k1,1r -k9,9'
 alias list='ls -al | grep -v -e '\''\.DS_Store'\'' | sort -k1,1r -k9,9'
-alias today='echo $(date '\''+%C%y%m%d'\'')'
+alias today='date "+%C%y%m%d"'
+alias timestamp='date "+%Y-%m-%d %H:%M:%S"'
 alias disklist='diskutil list'
 alias gemini='builtin cd $ENVHOME/3_archive/zz_gemini && command gemini'
 # cd
@@ -53,6 +54,7 @@ alias vimpath='vim $environment/data/path.sh'
 alias vimknownhosts='vim ~/.ssh/known_hosts'
 alias vimactivate='vim $environment/activate.sh'
 alias vimregister='vim $ENVHOME/1_area/work_note/register.txt'
+alias vimdata='vim $ENVHOME/1_area/work_note/data.txt'
 alias vima='vim $environment/bin/a'
 alias vimsshconfig='vim /Users/bagjeonghun/.ssh/config'
 alias vimhosts='sudo vim /etc/hosts'
