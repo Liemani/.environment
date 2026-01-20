@@ -30,7 +30,7 @@ node_modules/
 #	- All files without dot on it's base name are excluded.
 
 # exclude specific files with dot on it's base name
-.*.sw[pon]
+.*sw[pon]
 *.[oa]
 *.out
 *.class

@@ -84,6 +84,7 @@ color desert
 " 	syntax on
 " endif
 :highlight CursorLine ctermbg=239
+:set colorcolumn=81
 
 set listchars=eol:$,space:_,tab:\|.,trail:_
 " "eol", "extends", "precedes"
@@ -92,7 +93,7 @@ highlight NonText ctermfg=235
 highlight SpecialKey ctermfg=235
 " verbose highlight <highlight group>
 
-set cursorline
+" set cursorline
 
 set hlsearch
 
@@ -151,12 +152,12 @@ nnoremap <F4><F4> <C-W>:qa!<CR>
 nnoremap <F5> :e<CR>
 " load files to args with desired extension
 nnoremap <F6> :args **/*.
+" grep the word last copied in the current file
+nnoremap <F7> /<C-R>0<CR>:vimgrep <C-R>0 %<CR>:echo len(getqflist())<CR>
 " grep last searched item in all the child files and update quickfix list
-nnoremap <F7> :cgetexpr systemlist("grep -rn --binary-files=without-match --exclude=tags '<C-R>/'")<CR>
+nnoremap <F7><F7> /<C-R>0<CR>:cgetexpr systemlist("grep -rn --binary-files=without-match --exclude=tags '<C-R>/'")<CR>:echo len(getqflist())<CR>
 " grep last search in all the argument list
 " nnoremap <F7> :vimgrep // ##<CR>
-" grep the word on the cursor in the current file
-nnoremap <F7><F7> *:vimgrep <C-R><C-W> %<CR>:echo len(getqflist())<CR>
 "" replace all "/ to "0
 nnoremap <F8> :argdo %s/<C-R>//<C-R>0/ceg<CR>
 nnoremap <F8><F8> :argdo %s/<C-R>//<C-R>0/g<CR>
@@ -167,6 +168,22 @@ nnoremap <F8><F8> :argdo %s/<C-R>//<C-R>0/g<CR>
 "" store grep to @"
 nnoremap <F9> :let @t=""<CR> :g/<C-R>//y T<CR>
 vnoremap <F9><F9> <ESC>:let @t=""<CR> :'<,'>g/<C-R>//y T<CR>
+
+"" diff current file with HEAD on the new window
+nnoremap <F10> :call GitDiffHead()<CR>
+function! GitDiffHead()
+  let t = &filetype
+  vnew
+
+  r !git show HEAD:#
+  normal ggdd
+  diffthis
+  let &filetype = t
+  wincmd p
+
+  diffthis
+endfunction
+
 "" search "/ all arg list
 " nnoremap <F10> :set nomodifiable<CR>:set nowrite<CR>
 " nnoremap <F10><F10> :set modifiable<CR>:set write<CR>
