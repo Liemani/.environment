@@ -23,11 +23,8 @@ alias cdtemp='mkdir /tmp/$(today); cd /tmp/$(today)'
 #   --pretty=format:"%C(yellow)%h %C(magenta)%d %C(cyan)%<(6,trunc)%an %C(green)%ad %Creset%s" \
 #   --date=short'
 alias gitlog='git log --all --graph --max-count=42 --pretty=format:"%C(auto)%h%d %C(magenta)%<(6,trunc)%an %C(dim white)%ad %C(reset)%<(80,trunc)%s" --date=short'
-
-
-
-alias gitlogall='git log --all --graph --oneline'
-alias gitd='git status && gitlog'
+alias gitlogall='gitlog --max-count=-1'
+alias gits='git status && gitlog'
 
 # a::command
 alias dump='a dump'

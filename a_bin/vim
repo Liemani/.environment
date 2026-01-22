@@ -3,29 +3,35 @@
 # vim a_command
 
 if [ $# -ne 1 ]; then
-  echo 'usage : vim <a_command>'
+  printf "usage : %s <a_command>\n" "$(basename "$0")"
   exit 1
 fi
 
 found=false
 
-for p in $(echo $A_PATH | tr ':' '\n'); do
-  if [ -x "$p/$1" ]; then
-    cd $p
-    vim "$p/$1"
+for path in $(echo $A_PATH | tr ':' '\n'); do
+  if [ -x "$path/$1" ]; then
     found=true
+    vim "$path/$1"
     break
   fi
 done
 
 if [ "$found" = false ]; then
-  {
-    printf '#!/bin/bash\n'
-    printf '\n'
-    printf '\n'
-  } > "$private_a_bin/$1"
-  chmod +x "$private_a_bin/$1"
+  cat << 'EOF' > "$private_a_bin/$1"
+#!/bin/bash
+# description
 
-  cd $private_a_bin
+if [ $# -ne 1 ]; then
+  printf "usage: %s arg\n" "$(basename "$0")"
+  exit 1
+fi
+
+
+
+
+EOF
+
+  chmod +x "$private_a_bin/$1"
   vim "$private_a_bin/$1"
 fi

@@ -1,0 +1,25 @@
+#!/bin/bash
+# diff a commit's change
+
+if [ $# -lt 0 ]; then
+  printf "usage: %s commit [options]\n" "$(basename "$0")"
+  exit 1
+fi
+
+
+
+if [ -z "$1" ] || [[ "$1" == -* ]]; then
+  commit="HEAD"
+else
+  commit="$1"
+  shift
+fi
+
+output=$(git diff --color=always $commit^ $commit "$@")
+line_count=$(echo "$output" | wc -l)
+
+if [ "$line_count" -lt "$(tput lines)" ]; then
+  echo "$output"
+else
+  echo "$output" | less -R -p "^diff"
+fi

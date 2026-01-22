@@ -1,4 +1,5 @@
 #!/bin/bash
+# publish private a command
 
 if [ $# -ne 1 ]; then
   echo 'usage : publish <a_command>'
