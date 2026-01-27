@@ -1,7 +1,7 @@
 # general command
 # alias a='$environment/bin/a'
 # alias ls='ls -Ap1 --color'
-alias ls='ls -Ap1'
+alias ls='ls -AF1'
 alias lsvs='ls $private/.vimsession'
 alias mv='mv -i'	# prevent silent overwriting
 alias cp='cp -Rip'	# prevent silent overwriting

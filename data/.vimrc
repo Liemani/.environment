@@ -85,6 +85,7 @@ color desert
 " endif
 :highlight CursorLine ctermbg=239
 :set colorcolumn=81
+:highlight ColorColumn ctermbg=237
 
 set listchars=eol:$,space:_,tab:\|.,trail:_
 " "eol", "extends", "precedes"
