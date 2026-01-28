@@ -16,10 +16,12 @@ else
 fi
 
 output=$(git diff --color=always $commit^ $commit "$@")
-line_count=$(echo "$output" | wc -l)
+# line_count=$(echo "$output" | wc -l)
+CLEAN_FIRST_LINE=$(echo "$output" | head -n 1 | sed 's/\x1b\[[0-9;]*m//g')
 
-if [ "$line_count" -lt "$(tput lines)" ]; then
-  echo "$output"
-else
+# if [ "$line_count" -ge "$(tput lines)" ]; then
+if [[ $CLEAN_FIRST_LINE =~ ^diff ]]; then
   echo "$output" | less -R -p "^diff"
+else
+  echo "$output"
 fi
