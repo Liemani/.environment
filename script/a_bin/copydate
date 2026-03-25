@@ -1,0 +1,4 @@
+#!/bin/bash
+# copy date
+
+a copy `date "+%F %a"`

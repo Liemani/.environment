@@ -1,0 +1,14 @@
+#!/bin/bash
+# mv a_script
+
+if [ $# -ne 2 ]; then
+  echo 'usage: mv <from> <to>'
+  return 1
+fi
+
+if . "$A_CORE/_get_a_script" "$1"; then
+  mv -v "$_a_script" "$(dirname $_a_script)/$2"
+else
+  echo "a_mv: $1: No such file" >&2
+  return 1
+fi

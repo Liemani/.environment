@@ -1,5 +1,5 @@
 #!/bin/bash
-#	usage: aux generate_c_structure <class name> <base class name> <path>
+#	usage: generate_c_structure <class name> <base class name> <path>
 
 if [[ $# -eq 2 ]]; then
 	3=$(pwd)
@@ -8,7 +8,7 @@ elif [[ $# -eq 3 ]]; then
 		3=$(pwd)/$3
 	fi
 else
-	echo 'usage: aux generateCppDerivedFrom <class name> <base class name> <path>'
+	echo 'usage: generateCppDerivedFrom <class name> <base class name> <path>'
 	return 1
 fi
 
@@ -17,7 +17,7 @@ if [[ -e $3/$1.hpp ]] || [[ -e $3/$1.cpp ]]; then
 	return 1
 fi
 
-cd $env/.tool
+cd $ENVIRONMENT/.tool
 #	uppercase name
 #	class name
 #	instance name

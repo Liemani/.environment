@@ -9,23 +9,23 @@ fi
 
 
 if [ -z "$1" ] || [[ "$1" == -* ]]; then
-  commit="HEAD"
+  _commit="HEAD"
 else
-  commit="$1"
+  _commit="$1"
   shift
 fi
 
-output=$(git diff --color=always $commit^ $commit "$@")
-# line_count=$(echo "$output" | wc -l)
-clean_first_line=$(echo "$output" | head -n 1 | sed 's/\x1b\[[0-9;]*m//g')
+_output=$(git diff --color=always $_commit^ $_commit "$@")
+# line_count=$(echo "$_output" | wc -l)
+_clean_first_line=$(echo "$_output" | head -n 1 | sed 's/\x1b\[[0-9;]*m//g')
 
 # if [ "$line_count" -ge "$(tput lines)" ]; then
-if [[ $clean_first_line =~ ^diff ]]; then
-  echo "$output" | less -R -p "^diff"
+if [[ $_clean_first_line =~ ^diff ]]; then
+  echo "$_output" | less -R -p "^diff"
 else
-  echo "$output"
+  echo "$_output"
 fi
 
-unset commit
-unset output
-unset clean_first_line
+unset _commit
+unset _output
+unset _clean_first_line

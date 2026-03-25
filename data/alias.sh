@@ -31,7 +31,6 @@ alias gits='git status && gitlog'
 alias dump='a dump'
 alias record='a record'
 alias vim='a _vim'
-alias vs='a vimsession'
 alias ed='ed -p "command > "'
 
 ## script

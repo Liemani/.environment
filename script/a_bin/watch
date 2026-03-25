@@ -1,11 +1,9 @@
 #!/bin/bash
 
 if [[ $# -eq 0 ]]; then
-  echo 'usage : watch <pid> <notification message>'
+  echo 'usage: watch <pid> <notification message>'
   return 1
 fi
-
-
 
 echo 'Watching' $1
 

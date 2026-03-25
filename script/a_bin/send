@@ -1,18 +1,19 @@
 #!/bin/bash
-# todo : id / ip
+# todo: add user, host
+# todo: replace scp to rsync
 
-if [[ $# -eq 0 ]]; then
-  echo 'usage : send <destination : location> <files : path>'
-elif [[ $# -lt 2 ]]; then
+if [ $# -eq 0 ]; then
+  echo 'usage: send <destination : location> [<files : path>]'
+elif [ $# -eq 1 ]; then
   2=$local/send/*
 fi
 
-networkAddress=$1
-destination=$networkAddress:/home/a/local/receive
+_networkAddress=$1
+_destination=$_networkAddress:/home/a/local/receive
 
 shift
 
-scp -r $@ $destination
+scp -r $@ $_destination
 
-unset networkAddress
-unset destination
+unset _networkAddress
+unset _destination

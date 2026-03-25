@@ -1,0 +1,9 @@
+#!/bin/bash
+# unpublish a_script
+
+if [ $# -ne 1 ]; then
+  echo 'usage: unpublish <a_command>'
+  return 1
+fi
+
+mv -v "$A_PATH_PUBLIC/$1" "$A_PATH_PRIVATE/$1"

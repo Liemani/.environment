@@ -1,0 +1,9 @@
+#!/bin/bash
+# git ls commit
+
+if [ $# -ge 1 ]; then
+  echo 'usage: gitls <a_script>'
+  return 1
+fi
+
+git ls-tree -r --full-tree --name-only ${1:-HEAD}

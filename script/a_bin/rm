@@ -2,14 +2,14 @@
 # rm a_script
 
 if [ $# -ne 1 ]; then
-  printf "usage : %s <%s>\n" "$(basename "$0")" "a_script"
+  echo 'usage: rm <a_script>'
   return 1
 fi
 
 if . "$A_CORE/_get_a_script" "$1"; then
   rm "$_a_script"
-  printf "%s is removed\n" "$_a_script"
+  echo "a_rm: [$1] is removed"
 else
-  printf "%s: %s: No such file\n" "$(basename "$0")" "$_a_script"
+  echo "a_rm: $1: No such file" >&2
   return 1
 fi

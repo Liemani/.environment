@@ -2,7 +2,7 @@
 # vim a_script
 
 if [ $# -ne 1 ]; then
-  printf "usage : %s <%s>\n" "$(basename "$0")" "a_script"
+  echo 'usage: vim <a_script>'
   return 1
 fi
 
@@ -14,11 +14,9 @@ else
 # description
 
 if [ $# -ne 1 ]; then
-  printf "usage: %s <%s>\n" "$(basename "$0")" "arg"
+  echo 'usage: a_script <arg>'
   return 1
 fi
-
-
 
 
 EOF

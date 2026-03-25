@@ -6,5 +6,5 @@ if [ $# -ge 2 ]; then
     return 1
 fi
 
-a gitcommit "$@"
+. a gitcommit "$@"
 git push

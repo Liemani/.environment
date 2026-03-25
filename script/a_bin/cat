@@ -1,11 +1,14 @@
 #!/bin/bash
-# cat filename:lineno
+# cat a_script
 
-if [ "$#" -ne 1 ]; then
-  printf "usage: %s <%s>\n" "$(basename "$0")" "filename:lineno"
+if [ $# -ne 1 ]; then
+  echo 'usage: cat <a_script>'
   return 1
 fi
 
-IFS=: read -r file lineno <<< "$1"
-
-sed -n $lineno'p' $file
+if . "$A_CORE/_get_a_script" "$1"; then
+  cat "$_a_script"
+else
+  echo "a_cat: $1: No such file" >&2
+  return 1
+fi

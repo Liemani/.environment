@@ -8,7 +8,7 @@ elif [[ $# -eq 2 ]]; then
 		2=$(pwd)/$2
 	fi
 else
-	echo 'usage: aux generate_c_structure <structure_name> <path>'
+	echo 'usage: generate_c_structure <structure_name> <path>'
 	return 1
 fi
 
@@ -17,7 +17,7 @@ if [[ -e $2/$1.h ]] || [[ -e $2/$1.c ]]; then
 	return 1
 fi
 
-cd $env/.tool
+cd $ENVIRONMENT/.tool
 echo uppercase name = $(tr '[:lower:]' '[:upper:]' <<< $1)"\n"lowercase name = $1 > name.variable
 ./variabledText.out template.h -o $2/$1.h
 ./variabledText.out template.c -o $2/$1.c

@@ -3,7 +3,7 @@
 # store ip address to /tmp/.environment/ipaddress/
 
 if [ $# -ne 1 ]; then
-  echo 'usage : sshlan <mac address>'
+  echo 'usage: sshlan <mac address>'
   return 1
 fi
 

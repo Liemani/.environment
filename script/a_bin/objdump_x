@@ -6,17 +6,17 @@ if [[ $# -ne 1 ]]; then
     return 1
 fi
 
-basename=${1%.*}
-extension=${1##*.}
+_basename=${1%.*}
+_extension=${1##*.}
 
-if [[ extension == "c" || extension == "s" ]]; then
-    clang -o .$basename.o -c $basename.c -O1 -target x86_64-apple-macos10.12
-    objdump -D -S .$basename.o > $basename.objdump
-    rm .$basename.o
+if [[ _extension == "c" || _extension == "s" ]]; then
+    clang -o .$_basename.o -c $_basename.c -O1 -target x86_64-apple-macos10.12
+    objdump -D -S .$_basename.o > $_basename.objdump
+    rm .$_basename.o
 else
-    objdump -D -S $1 > $basename.objdump
+    objdump -D -S $1 > $_basename.objdump
 fi
 
 
-unset basename
-unset extension
+unset _basename
+unset _extension

@@ -29,18 +29,18 @@ done
 shift $((OPTIND-1))
 
 if [ $# -eq 0 ]; then
-  gitroot=$(git rev-parse --show-toplevel 2>/dev/null)
+  _gitroot=$(git rev-parse --show-toplevel 2>/dev/null)
 
-  if [ -n "$gitroot" ]; then
-    if [ -f "$gitroot/.vimsession" ]; then
-      echo "Opening session from $gitroot/.vimsession"
-      a _vim -S "$gitroot/.vimsession"
+  if [ -n "$_gitroot" ]; then
+    if [ -f "$_gitroot/.vimsession" ]; then
+      echo "Opening session from $_gitroot/.vimsession"
+      a _vim -S "$_gitroot/.vimsession"
       return 0
     else
-      reponame=$(basename "$gitroot")
-      if [ -f "$PRIVATE/.vimsession/$reponame" ]; then
-        echo "Opening session from $PRIVATE/.vimsession/$reponame"
-        a _vim -S "$PRIVATE/.vimsession/$reponame"
+      _reponame=$(basename "$_gitroot")
+      if [ -f "$PRIVATE/.vimsession/$_reponame" ]; then
+        echo "Opening session from $PRIVATE/.vimsession/$_reponame"
+        a _vim -S "$PRIVATE/.vimsession/$_reponame"
         return 0
       fi
     fi
@@ -50,12 +50,12 @@ if [ $# -eq 0 ]; then
   return 1
 
 elif [ $# -eq 1 ]; then
-  session_file="$PRIVATE/.vimsession/$1"
-  if [ -f "$session_file" ]; then
-    echo "Opening session from $session_file"
-    a _vim -S "$session_file"
+  _session_file="$PRIVATE/.vimsession/$1"
+  if [ -f "$_session_file" ]; then
+    echo "Opening session from $_session_file"
+    a _vim -S "$_session_file"
   else
-    echo "Session file not found: $session_file"
+    echo "Session file not found: $_session_file"
     return 1
   fi
 else
@@ -64,6 +64,6 @@ else
   return 1
 fi
 
-unset gitroot
-unset reponame
-unset session_file
+unset _gitroot
+unset _reponame
+unset _session_file

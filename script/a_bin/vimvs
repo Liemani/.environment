@@ -1,0 +1,15 @@
+#!/bin/bash
+# vim vimsession for git repository
+
+if [ $# -ne 0 ]; then
+  echo 'usage: vimvs'
+  return 1
+fi
+
+_repo_local_path=$(2>/dev/null git rev-parse --show-toplevel)
+_repo_local_name=$(2>/dev/null basename "$repo_local_path")
+
+vim $private/.vimsession/$repo_local_name
+
+unset _repo_local_path
+unset _repo_local_name

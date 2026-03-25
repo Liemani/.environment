@@ -105,7 +105,7 @@ script `a` run `a_script` in $env/bin
 
 ### vim
 
-- all `vim` command call `a _vim`, and `_vim` call `command vim`
+- `vim` command call `a _vim`, and `_vim` call `command vim`
   - `vim (aliased)` -> `_vim.sh` -> `command vim`
 
 ### Directory Structure

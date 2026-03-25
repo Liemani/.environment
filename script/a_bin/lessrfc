@@ -1,0 +1,25 @@
+#!/bin/bash
+# usage: lessrfc <rfc-number>
+# example: lessrfc 3986
+
+if [ -z "$1" ]; then
+  echo 'usage: lessrfc <rfc-number>'
+  return 1
+fi
+
+_url="https://www.rfc-editor.org/rfc/rfc$1.txt"
+_cache_dir="$HOME/.cache/rfc"
+_cache_file="$_cache_dir/rfc$1.txt"
+
+mkdir -p "$_cache_dir"
+
+# 이미 캐시된 경우 캐시 사용
+if [ ! -f "$_cache_file" ]; then
+  curl -fsSL "$_url" -o "$_cache_file" || { echo "❌ Failed to fetch RFC $1"; return 1; }
+fi
+
+less "$_cache_file"
+
+unset _url
+unset _cache_dir
+unset _cache_file
