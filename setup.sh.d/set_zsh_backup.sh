@@ -22,9 +22,6 @@ for backbone_path in $backbone_path_list; do
 	fi
 done
 
-unset backbone_path_list
-unset backbone_path
-
 
 
 if [[ ! -d $env ]]; then
@@ -36,8 +33,6 @@ if [[ ! -d $env ]]; then
 	fi
 
 	mv $env_tmp $remote
-
-	unset env_tmp
 fi
 
 
@@ -68,11 +63,3 @@ done
 if [[ ! -d $PRIVATE ]]; then
 	mkdir $PRIVATE;
 fi
-
-
-
-unset repositories
-unset git_user_name
-unset git_user_email
-unset git_address
-unset repository

@@ -1,0 +1,15 @@
+#!/bin/bash
+# run a_script
+
+if [ $# -eq 0 ]; then
+  >&2 echo 'usage : a <a_script> <arguments>'
+  >&2 a ls
+  return 1
+fi
+
+if . "$A_CORE/_get_a_script" "$1"; then
+  shift
+  . "$_a_script" "$@"
+else
+  echo a: excutable script not found: $1
+fi

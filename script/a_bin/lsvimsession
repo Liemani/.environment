@@ -1,0 +1,9 @@
+#!/bin/bash
+# list private vimsession
+
+if [ $# -ne 0 ]; then
+  printf "usage: %s\n" "$(basename "$0")"
+  return 1
+fi
+
+ls $PRIVATE/.vimsession

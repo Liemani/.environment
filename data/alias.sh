@@ -1,7 +1,7 @@
-# general command
+# general alias
 # alias a='$ENVIRONMENT/bin/a'
 # alias ls='ls -Ap1 --color'
-alias a='source a'
+alias a='. a'
 alias ls='ls -AF1'
 alias lsvs='ls $PRIVATE/.vimsession'
 alias mv='mv -i'	# prevent silent overwriting
@@ -27,7 +27,7 @@ alias gitlog='git log --all --graph --max-count=42 --pretty=format:"%C(auto)%h%d
 alias gitlogall='gitlog --max-count=-1'
 alias gits='git status && gitlog'
 
-# a::command
+# a_script
 alias dump='a dump'
 alias record='a record'
 alias vim='a _vim'
@@ -53,7 +53,7 @@ alias vimknownhosts='vim ~/.ssh/known_hosts'
 alias vimactivate='vim $ENVIRONMENT/activate.sh'
 alias vimregister='vim $ENVHOME/1_area/work_note/register.txt'
 alias vimdata='vim $ENVHOME/1_area/work_note/data.txt'
-alias vima='vim $ENVIRONMENT/bin/a'
+alias vima='vim $SCRIPT/bin/a'
 alias vimsshconfig='vim /Users/bagjeonghun/.ssh/config'
 alias vimhosts='sudo vim /etc/hosts'
 

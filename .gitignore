@@ -1,2 +1,3 @@
-!/bin/a
-!/a_bin/[!.]*
+!/script/bin/a
+!/script/core/[!.]*
+!/script/a_bin/[!.]*

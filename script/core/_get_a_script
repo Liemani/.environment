@@ -1,0 +1,14 @@
+#!/bin/bash
+# usage: if . "$CORE/_get_a_script" "$1"; then
+
+_a_script=""
+for _a_path in "${a_path[@]}"; do
+  if [ -f "$_a_path/$1" ]; then
+    _a_script="$_a_path/$1"
+    unset _a_path
+    return 0
+  fi
+done
+
+unset _a_path
+return 1

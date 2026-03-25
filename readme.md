@@ -1,6 +1,6 @@
 ## prologue
 
-I recommand using this program on new environment not old. And `backup` aux command's uniformed commit message makes hard differentiating your commits. So I recommand to use this program for backup purpose of repository which is don't need to record the change log or version.
+I recommand using this program on new environment not old. And `backup` aux script's uniformed commit message makes hard differentiating your commits. So I recommand to use this program for backup purpose of repository which is don't need to record the change log or version.
 
 
 ## File structure
@@ -39,16 +39,16 @@ $SHELL .environment/setup.sh
 5. source shell rc file
 
 ```
-source $ENVHOME/activate.sh
+. $ENVHOME/activate.sh
 ```
 
 ## Usage of `a`
 
 ```
-a <a_command> [<arguments>]
+a <a_script> [<arguments>]
 ```
 
-command `a` run `a_command` in $env/bin
+script `a` run `a_script` in $env/bin
 
 ## endcode
 
@@ -99,7 +99,7 @@ command `a` run `a_command` in $env/bin
 - Liemani's `.vimrc`
 - Liemani's global `.gitignore`
 - Liemani's prompt
-- Liemani's `a` command environment
+- Liemani's `a` script environment
 
 ## Deep Features
 
@@ -110,14 +110,14 @@ command `a` run `a_command` in $env/bin
 
 ### Directory Structure
 
-`bin/`: Executable files. Used as `a_command`
+`bin/`: Executable files. Used as `a_script`
 `copy_source/`: Files are copied when execute `set_env.sh`
 `data/`: Files are sourced when `source apply_env.sh` or whenever need
 `script/`: Script files
 
 ## todo
 
-- `a_command`
+- `a_script`
   - Adopt
     - `backcheck`
     - `backup`
@@ -144,14 +144,14 @@ command `a` run `a_command` in $env/bin
 
 
 ## decision record
-use "." not "bash" when calling a_command
+use "." not "bash" when calling a_script
 {
   created : 2025-03-12 Wed
   last_modified : 2025-03-12 Wed
   status : accepted
   context :
   decision : use "."
-  consequences : a_command will use same environment(ex> alias) with parent process. But must unset local variable.
+  consequences : a_script will use same environment(ex> alias) with parent process. But must unset local variable.
 }
 
 {
@@ -159,8 +159,9 @@ use "." not "bash" when calling a_command
   created : 2026-03-24 Tue
   last_modified : 2026-03-25 Wed
   status : accepted
-  context : a_command is called with 'source', have to avoid env conflict
+  context : a_script is called with 'source', have to avoid env conflict
   decision1 : prepend '_' for local variable
   decision2 : use lowercase letter for local variable
-  consequences : a_command avoid env conflict with original process
+  decision3 : prepend '_' for local variable - lowercase letter is also used for variable already
+  consequences : a_script avoid env conflict with original process
 }

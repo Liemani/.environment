@@ -1,0 +1,21 @@
+#!/bin/bash
+# ls a_script
+
+if [ $# -gt 1 ]; then
+  printf "usage : %s [%s]\n" "$(basename "$0")" "a_script"
+  return 1
+fi
+
+if [ -n "$1" ]; then
+  for _a_path in "${a_path[@]}"; do
+    if [ -f "$_a_path/$1" ]; then
+      command ls "$_a_path/$1"
+    fi
+  done
+else
+  for _a_path in "${a_path[@]}"; do
+    command ls "$_a_path"
+  done
+fi
+
+unset _a_path

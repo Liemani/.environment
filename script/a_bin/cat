@@ -2,14 +2,10 @@
 # cat filename:lineno
 
 if [ "$#" -ne 1 ]; then
-  echo "Usage: $0 filename:lineno"
+  printf "usage: %s <%s>\n" "$(basename "$0")" "filename:lineno"
   return 1
 fi
 
-ifs=$IFS
 IFS=: read -r file lineno <<< "$1"
 
 sed -n $lineno'p' $file
-
-IFS=$ifs
-unset ifs
