@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # suppose current branch is dev
 
 git branch -f main dev

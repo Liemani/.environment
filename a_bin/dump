@@ -1,6 +1,8 @@
-temp="[20$(date "+%y/%m/%d %H:%M:%S")] $@"
+#!/bin/bash
 
-echo "$temp"
-echo "$temp" >> $personal/.private/dump.txt
+log="[20$(date "+%y/%m/%d %H:%M:%S")] $@"
 
-unset temp
+echo "$log"
+echo "$log" >> $PRIVATE/dump.txt
+
+unset log

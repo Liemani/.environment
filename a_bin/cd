@@ -2,7 +2,7 @@
 # cd to the script file directory
 
 if [[ $# -ne 1 ]]; then
-	echo 'usage: aux cd <aux command>'
+	echo 'usage: a cd <a_command>'
 	return 0
 fi
 

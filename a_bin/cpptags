@@ -6,7 +6,7 @@ if [[ $# -eq 0 ]]; then
     1='.'
 elif [[ $# -ne 1 ]]; then
 	echo 'usage: aux cpptags <directory to analyze>'
-	exit 0
+	return 0
 fi
 
 

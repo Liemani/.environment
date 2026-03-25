@@ -2,7 +2,7 @@
 
 if [[ $# -ne 3 ]]; then
 	echo 'usage: aux minitalk_test <server pid> <string> <count>'
-	exit 0
+	return 0
 fi
 
 
@@ -27,3 +27,8 @@ echo
 echo "Time: $time secs"
 echo "Transfered bytes: $transfered_bytes bytes"
 echo "Transfer speed: $transfer_speed bytes/sec"
+
+unset transfered_bytes
+unset count
+unset time
+unset transfer_speed

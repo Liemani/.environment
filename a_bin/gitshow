@@ -1,3 +1,4 @@
+#!/bin/bash
 # git show HEAD file
 
 if [ $# -ne 1 ]; then

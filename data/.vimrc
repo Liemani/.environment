@@ -140,13 +140,13 @@ nnoremap <F1> "tyiwbb/\C\<<C-R>t\><CR>
 " make vimsession at project root
 " nnoremap <F3> :mksession! $repo_local_path/.vimsession<CR>
 " make vimsession at private dir
-nnoremap <F2> :mksession! $private/.vimsession/$repo_local_name<CR>
+nnoremap <F2> :mksession! $PRIVATE/.vimsession/$repo_local_name<CR>
 " make vimsession with desired name
-nnoremap <F2><F2> :mksession! $private/.vimsession/
+nnoremap <F2><F2> :mksession! $PRIVATE/.vimsession/
 " load vimrc
-nnoremap <F3> :source $environment/data/.vimrc<CR>
+nnoremap <F3> :source $ENVIRONMENT/data/.vimrc<CR>
 " quit
-nnoremap <F4> :q<CR>
+nnoremap <F4> :qa<CR>
 " quit all buffers without write
 nnoremap <F4><F4> <C-W>:qa!<CR>
 " reload current window
@@ -154,9 +154,9 @@ nnoremap <F5> :e<CR>
 " load files to args with desired extension
 nnoremap <F6> :args **/*.
 " grep the word last copied in the current file
-nnoremap <F7> /<C-R>0<CR>:vimgrep <C-R>0 %<CR>:echo len(getqflist())<CR>
+nnoremap <F7> <CR>:vimgrep '<C-R>/' %<CR>:echo len(getqflist())<CR>
 " grep last searched item in all the child files and update quickfix list
-nnoremap <F7><F7> /<C-R>0<CR>:cgetexpr systemlist("grep -rn --binary-files=without-match --exclude=tags '<C-R>/'")<CR>:echo len(getqflist())<CR>
+nnoremap <F7><F7> <CR>:cgetexpr systemlist("grep -rn --binary-files=without-match --exclude=tags '<C-R>/'")<CR>:echo len(getqflist())<CR>
 " grep last search in all the argument list
 " nnoremap <F7> :vimgrep // ##<CR>
 "" replace all "/ to "0
@@ -237,8 +237,14 @@ nnoremap <leader>ee :e %:r.h<CR>
 " jump to .cpp file of same name
 nnoremap <leader>eee :e %:r.cpp<CR>
 " log selected range
-vnoremap <leader>l :!$environment/script/vim/append_timestamp2log.sh<CR>
-nnoremap <leader>ll V:!$environment/script/vim/append_timestamp2log.sh<CR>
+vnoremap <leader>l "*ygv:!$ENVIRONMENT/script/vim/append_work_log_timestamp.sh<CR>
+nmap <leader>ll V<leader>l
+vnoremap <leader>pl "*ygv:!$ENVIRONMENT/script/vim/append_public_log_timestamp.sh<CR>
+nmap <leader>pll V<leader>pl
+" vnoremap <leader>l :!$ENVIRONMENT/script/vim/append_work_log_timestamp.sh<CR>
+" nnoremap <leader>ll V:!$ENVIRONMENT/script/vim/append_work_log_timestamp.sh<CR>
+" vnoremap <leader>pl :!$ENVIRONMENT/script/vim/append_public_log_timestamp.sh<CR>
+" nnoremap <leader>pll V:!$ENVIRONMENT/script/vim/append_public_log_timestamp.sh<CR>
 
 " Tab move
 " nnoremap GT gT

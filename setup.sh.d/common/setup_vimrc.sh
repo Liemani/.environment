@@ -1,1 +1,1 @@
-echo 'source $environment/data/.vimrc' >> $HOME/.vimrc
+echo 'source $ENVIRONMENT/data/.vimrc' >> $HOME/.vimrc

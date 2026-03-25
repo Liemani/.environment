@@ -1,5 +1,5 @@
 # will activate environment
-ENVACTIVATE=$environment/activate.sh
+ENVACTIVATE=$ENVIRONMENT/activate.sh
 if [ ! -e "$ENVACTIVATE" ]; then
   ENVACTIVATE=~/.environment/activate.sh
 fi

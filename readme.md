@@ -26,7 +26,7 @@ cd $ENVHOME
 git clone https://github.com/Liemani/.environment.git
 ```
 
-3. edit `data` directory for you
+3. edit `data` directory to you
 
 - $ENVHOME/.environment/data/
 
@@ -52,15 +52,17 @@ command `a` run `a_command` in $env/bin
 
 ## endcode
 
+- use builtin compiler
+
 #### the compilation system concept
 
 ##### file flow
 
-- source program(text)
-- modified source program(text)
-- assembly program(text)
-- relocatable object programs(binary)
-- executable object program(binary)
+- source code (text)
+- modified source code (text)
+- assembly code (text)
+- relocatable object programs (binary)
+- executable object program (binary)
 
 ##### processor flow
 
@@ -92,12 +94,12 @@ command `a` run `a_command` in $env/bin
 
 ## Features
 
-- Target : macOS::zsh, ::bash, Alpine Linux::ash
+- Target : macOS.zsh, bash, Alpine Linux.ash (deprecated)
 - Liemani's `.shrc`
 - Liemani's `.vimrc`
-- Liemani's `.gitignore`
+- Liemani's global `.gitignore`
 - Liemani's prompt
-- Liemani's `a` command
+- Liemani's `a` command environment
 
 ## Deep Features
 
@@ -150,4 +152,15 @@ use "." not "bash" when calling a_command
   context :
   decision : use "."
   consequences : a_command will use same environment(ex> alias) with parent process. But must unset local variable.
+}
+
+{
+  title : distinguish global and local environment variable visually
+  created : 2026-03-24 Tue
+  last_modified : 2026-03-25 Wed
+  status : accepted
+  context : a_command is called with 'source', have to avoid env conflict
+  decision1 : prepend '_' for local variable
+  decision2 : use lowercase letter for local variable
+  consequences : a_command avoid env conflict with original process
 }

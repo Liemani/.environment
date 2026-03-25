@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # remove a_command
 
 isRemoved=false
@@ -15,5 +14,7 @@ done
 
 if [ $isRemoved = false ]; then
   echo "a_rm: $1: No such file or directory"
-  exit 1
+  return 1
 fi
+
+unset isRemoved

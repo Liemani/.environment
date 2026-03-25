@@ -7,7 +7,7 @@ else
 	repositories=($(find $git -depth 1 -type d))
 fi
 
-aux pull $repositories
+a pull $repositories
 
 
 
@@ -20,3 +20,6 @@ for repository in $repositories; do
 			|| git clone https://github.com/$git_user_id/$repository.git $git/$repository
 	fi
 done
+
+unset repositories
+unset repository

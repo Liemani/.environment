@@ -1,5 +1,4 @@
 #!/bin/bash
-
 #	인자를 repository로 받기
 #	if [[ $# -ne 0 ]]; then
 #		repositories=($@)
@@ -9,8 +8,8 @@
 #	fi
 
 if [[ $# -ge 2 ]]; then
-	echo 'usage: aux backup [<message>]'
-	exit 1
+	echo 'usage: a backup [<message>]'
+	return 1
 fi
 
 if [[ $# -eq 0 ]]; then
@@ -20,5 +19,8 @@ fi
 repositories=($(find $git -depth 1 -type d))
 for repository in $repositories; do
 	cd $repository
-	aux push "$1"
+	a push "$1"
 done
+
+unset repositories
+unset repository

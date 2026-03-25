@@ -12,7 +12,7 @@ result_temp_file=.push_swap_result_temp
 
 if [[ $# -ne 2 ]]; then
 	echo 'usage: bash push_swap_test.sh <number> <times>'
-	exit 0
+	return 0
 fi
 
 
@@ -36,20 +36,20 @@ fi
 
 biggest_instruction_count=-1
 while [[ $times -gt 0 ]]; do
-	ARG=$(ruby -e "puts (1..$number).to_a.shuffle.join(' ')")
+	arg=$(ruby -e "puts (1..$number).to_a.shuffle.join(' ')")
 
-	./$push_swap $ARG > $result_temp_file
-	checker_result=$(cat $result_temp_file | ./$checker $ARG)
+	./$push_swap $arg > $result_temp_file
+	checker_result=$(cat $result_temp_file | ./$checker $arg)
 	instruction_count=$(printf '%d' $(cat $result_temp_file | wc -l))
 
 	echo "[$checker_result]	instruction count: $instruction_count"
 	if [[ $checker_result != OK || $instruction_count -gt $limit ]]; then
-		echo "Issue arguments: $ARG"
+		echo "Issue arguments: $arg"
 	fi
 
 	if [[ $instruction_count -gt $biggest_instruction_count ]]; then
 		biggest_instruction_count=$instruction_count
-		biggest_input=$ARG
+		biggest_input=$arg
 	fi
 
 	times=$((times - 1))
@@ -61,3 +61,17 @@ rm $result_temp_file
 echo
 echo "biggest_instruction_count instruction count: [$biggest_instruction_count]"
 echo "arguments: $biggest_input"
+
+
+unset push_swap
+unset checker
+unset result_temp_file
+unset number
+unset times
+unset limit
+unset biggest_instruction_count
+unset arg
+unset checker_result
+unset instruction_count
+unset biggest_instruction_count
+unset biggest_input

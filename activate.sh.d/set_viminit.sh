@@ -1,1 +1,1 @@
-export VIMINIT='source $environment/data/.vimrc'
+export VIMINIT='source $ENVIRONMENT/data/.vimrc'

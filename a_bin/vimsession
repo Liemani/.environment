@@ -12,16 +12,16 @@ while getopts "lh" opt; do
   case "$opt" in
     l)
       echo "Available sessions:"
-      ls "$private/.vimsession"
-      exit 0
+      ls "$PRIVATE/.vimsession"
+      return 0
       ;;
     h)
       print_usage
-      exit 0
+      return 0
       ;;
     \?)
       print_usage
-      exit 1
+      return 1
       ;;
   esac
 done
@@ -35,31 +35,35 @@ if [ $# -eq 0 ]; then
     if [ -f "$gitroot/.vimsession" ]; then
       echo "Opening session from $gitroot/.vimsession"
       a _vim -S "$gitroot/.vimsession"
-      exit 0
+      return 0
     else
       reponame=$(basename "$gitroot")
-      if [ -f "$private/.vimsession/$reponame" ]; then
-        echo "Opening session from $private/.vimsession/$reponame"
-        a _vim -S "$private/.vimsession/$reponame"
-        exit 0
+      if [ -f "$PRIVATE/.vimsession/$reponame" ]; then
+        echo "Opening session from $PRIVATE/.vimsession/$reponame"
+        a _vim -S "$PRIVATE/.vimsession/$reponame"
+        return 0
       fi
     fi
   fi
 
   echo "No identifier provided, and no suitable .vimsession found."
-  exit 1
+  return 1
 
 elif [ $# -eq 1 ]; then
-  session_file="$private/.vimsession/$1"
+  session_file="$PRIVATE/.vimsession/$1"
   if [ -f "$session_file" ]; then
     echo "Opening session from $session_file"
     a _vim -S "$session_file"
   else
     echo "Session file not found: $session_file"
-    exit 1
+    return 1
   fi
 else
   print_usage
-  ls "$private/.vimsession"
-  exit 1
+  ls "$PRIVATE/.vimsession"
+  return 1
 fi
+
+unset gitroot
+unset reponame
+unset session_file

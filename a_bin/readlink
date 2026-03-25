@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [ $# -ne 1 ]; then
   echo 'usage : readlink <a_command>'
   return 1

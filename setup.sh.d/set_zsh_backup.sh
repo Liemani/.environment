@@ -65,8 +65,8 @@ done
 
 
 
-if [[ ! -d $private ]]; then
-	mkdir $private;
+if [[ ! -d $PRIVATE ]]; then
+	mkdir $PRIVATE;
 fi
 
 

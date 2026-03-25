@@ -7,4 +7,4 @@ elif [[ $SHELL =~ .*/bash ]]; then
   . "$(dirname "${BASH_SOURCE[0]}")/data/path.sh"
 fi
 
-. $environment/activate.sh.d/activate.sh
+. $ENVIRONMENT/activate.sh.d/activate.sh

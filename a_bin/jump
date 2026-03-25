@@ -1,3 +1,4 @@
+#!/bin/bash
 # jump to mark in file system
 
 if [ $# -lt 1 ]; then

@@ -9,12 +9,12 @@ elif [[ $# -eq 2 ]]; then
 	fi
 else
 	echo 'usage: aux generate_c_structure <structure_name> <path>'
-	exit 1
+	return 1
 fi
 
 if [[ -e $2/$1.h ]] || [[ -e $2/$1.c ]]; then
 	echo "[$2/$1.h] or [$2/$1.c] is already exists!"
-	exit 1
+	return 1
 fi
 
 cd $env/.tool

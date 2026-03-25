@@ -2,7 +2,7 @@
 
 if [[ $# -eq 0 ]]; then
 	git pull
-	exit 0
+	return 0
 fi
 
 for local_repo in $@; do

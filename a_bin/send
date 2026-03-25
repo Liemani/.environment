@@ -1,4 +1,6 @@
+#!/bin/bash
 # todo : id / ip
+
 if [[ $# -eq 0 ]]; then
   echo 'usage : send <destination : location> <files : path>'
 elif [[ $# -lt 2 ]]; then

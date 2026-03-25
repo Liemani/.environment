@@ -1,3 +1,4 @@
+#!/bin/bash
 # force unmount and eject disk from volume name
 
 if [ $# -ne 1 ]; then

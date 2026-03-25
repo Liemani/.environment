@@ -1,6 +1,8 @@
+#!/bin/bash
+
 if [[ $# -eq 0 ]]; then
   echo 'usage : watch <pid> <notification message>'
-  exit 1
+  return 1
 fi
 
 

@@ -1,8 +1,9 @@
 # general command
-# alias a='$environment/bin/a'
+# alias a='$ENVIRONMENT/bin/a'
 # alias ls='ls -Ap1 --color'
+alias a='source a'
 alias ls='ls -AF1'
-alias lsvs='ls $private/.vimsession'
+alias lsvs='ls $PRIVATE/.vimsession'
 alias mv='mv -i'	# prevent silent overwriting
 alias cp='cp -Rip'	# prevent silent overwriting
 # alias list='ls -al1 | grep -v -e '\''\.swp'\'' -e '\''\.DS_Store'\'' | sort -k1,1r -k9,9'
@@ -41,18 +42,18 @@ alias catleases='cat /private/var/db/dhcpd_leases'
 alias cathosts='sudo cat /etc/hosts'
 
 ## vim
-alias vimbashrc='vim $environment/data/.bashrc'
-alias vimvimrc='vim $environment/data/.vimrc'
-alias vimgitignore='vim $environment/data/.gitignore'
+alias vimbashrc='vim $ENVIRONMENT/data/.bashrc'
+alias vimvimrc='vim $ENVIRONMENT/data/.vimrc'
+alias vimgitignore='vim $ENVIRONMENT/data/.gitignore'
 alias vimrecord='vim $personal/.private/record.txt'
-alias vimdump='vim $private/dump.txt'
-alias vimalias='vim $environment/data/alias.sh'
-alias vimpath='vim $environment/data/path.sh'
+alias vimdump='vim $PRIVATE/dump.txt'
+alias vimalias='vim $ENVIRONMENT/data/alias.sh'
+alias vimpath='vim $ENVIRONMENT/data/path.sh'
 alias vimknownhosts='vim ~/.ssh/known_hosts'
-alias vimactivate='vim $environment/activate.sh'
+alias vimactivate='vim $ENVIRONMENT/activate.sh'
 alias vimregister='vim $ENVHOME/1_area/work_note/register.txt'
 alias vimdata='vim $ENVHOME/1_area/work_note/data.txt'
-alias vima='vim $environment/bin/a'
+alias vima='vim $ENVIRONMENT/bin/a'
 alias vimsshconfig='vim /Users/bagjeonghun/.ssh/config'
 alias vimhosts='sudo vim /etc/hosts'
 

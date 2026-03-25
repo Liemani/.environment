@@ -2,13 +2,13 @@
 # source additional activate script
 # source shell specific scripts
 
-PATH=$PATH:$environment/bin
+PATH=$PATH:$ENVIRONMENT/bin
 
-. $environment/data/variable.sh
-. $environment/data/alias.sh
-. $environment/activate.sh.d/set_viminit.sh
+. $ENVIRONMENT/data/variable.sh
+. $ENVIRONMENT/data/alias.sh
+. $ENVIRONMENT/activate.sh.d/set_viminit.sh
 
-apply_sh_script=$environment/activate.sh.d/apply_$shell.sh
+apply_sh_script=$ENVIRONMENT/activate.sh.d/apply_$shell.sh
 if [ -f "$apply_sh_script" ]; then
   . $apply_sh_script
 fi

@@ -1,3 +1,4 @@
+#!/bin/bash
 # vim (grep interface file_python)
 
 if [ $# -lt 1 ]; then

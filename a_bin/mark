@@ -1,3 +1,4 @@
+#!/bin/bash
 # mark current directory for jump
 
 if [ $# -lt 1 ]; then

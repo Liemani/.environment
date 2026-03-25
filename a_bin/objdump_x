@@ -1,10 +1,9 @@
 #!/bin/bash
-
 # generate objdump file for x86_64 from c file or assembly code or object file
 
 if [[ $# -ne 1 ]]; then
     echo 'usage: aux objdump_x <filename>'
-    exit 1
+    return 1
 fi
 
 basename=${1%.*}
@@ -19,5 +18,5 @@ else
 fi
 
 
-unset extension
 unset basename
+unset extension

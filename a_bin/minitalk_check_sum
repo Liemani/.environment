@@ -31,3 +31,10 @@ if [[ $error != true ]]; then
 else
 	echo '[KO]'
 fi
+
+unset binaries
+unset sum
+unset result
+unset index
+unset ch
+unset error

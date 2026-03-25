@@ -1,3 +1,4 @@
+#!/bin/bash
 # list private vimsession
 
 if [ $# -ne 0 ]; then
@@ -5,7 +6,7 @@ if [ $# -ne 0 ]; then
     return 1
 fi
 
-base=$private/.vimsession
+base=$PRIVATE/.vimsession
 
 ls $base
 

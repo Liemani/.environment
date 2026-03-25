@@ -1,11 +1,11 @@
 #!/bin/bash
 # set git config
 
-. $environment/data/git.sh
+. $ENVIRONMENT/data/git.sh
 
 git config --global user.name $git_user_name
 git config --global user.email $git_user_email
-git config --global core.excludesFile $environment/data/.gitignore
+git config --global core.excludesFile $ENVIRONMENT/data/.gitignore
 git config --global alias.pull "git pull --rebase"
 git config --global init.defaultBranch main
 git config --global diff.tool vimdiff

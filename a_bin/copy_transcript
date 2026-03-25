@@ -1,3 +1,4 @@
+#!/bin/bash
 # copy transcript of youtube link
 
 if [ $# -lt 1 ]; then
@@ -5,5 +6,5 @@ if [ $# -lt 1 ]; then
   return 1
 fi
 
-cd $script/python
+cd $SCRIPT/python
 a copy 요약해줘 `uv run get_transcript.py "$1"`

@@ -1,6 +1,6 @@
 #!/bin/bash
-
 #	usage: aux generate_c_structure <class name> <base class name> <path>
+
 if [[ $# -eq 2 ]]; then
 	3=$(pwd)
 elif [[ $# -eq 3 ]]; then
@@ -9,12 +9,12 @@ elif [[ $# -eq 3 ]]; then
 	fi
 else
 	echo 'usage: aux generateCppDerivedFrom <class name> <base class name> <path>'
-	exit 1
+	return 1
 fi
 
 if [[ -e $3/$1.hpp ]] || [[ -e $3/$1.cpp ]]; then
 	echo "[$3/$1.hpp] or [$3/$1.cpp] is already exists!"
-	exit 1
+	return 1
 fi
 
 cd $env/.tool
