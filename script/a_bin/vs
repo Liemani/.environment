@@ -34,13 +34,13 @@ if [ $# -eq 0 ]; then
   if [ -n "$_gitroot" ]; then
     if [ -f "$_gitroot/.vimsession" ]; then
       echo "Opening session from $_gitroot/.vimsession"
-      a _vim -S "$_gitroot/.vimsession"
+      . a _vim -S "$_gitroot/.vimsession"
       return 0
     else
       _reponame=$(basename "$_gitroot")
       if [ -f "$PRIVATE/.vimsession/$_reponame" ]; then
         echo "Opening session from $PRIVATE/.vimsession/$_reponame"
-        a _vim -S "$PRIVATE/.vimsession/$_reponame"
+        . a _vim -S "$PRIVATE/.vimsession/$_reponame"
         return 0
       fi
     fi
@@ -53,7 +53,7 @@ elif [ $# -eq 1 ]; then
   _session_file="$PRIVATE/.vimsession/$1"
   if [ -f "$_session_file" ]; then
     echo "Opening session from $_session_file"
-    a _vim -S "$_session_file"
+    . a _vim -S "$_session_file"
   else
     echo "Session file not found: $_session_file"
     return 1

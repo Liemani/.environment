@@ -19,6 +19,7 @@ if [ -n "$1" ]; then
   fi
 else
   for _a_path in "${a_path[@]}"; do
+    echo "$_a_path:"
     command ls "$_a_path"
   done
 fi

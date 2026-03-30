@@ -7,9 +7,9 @@ if [ $# -ne 0 ]; then
 fi
 
 _repo_local_path=$(2>/dev/null git rev-parse --show-toplevel)
-_repo_local_name=$(2>/dev/null basename "$repo_local_path")
+_repo_local_name=$(2>/dev/null basename "$_repo_local_path")
 
-vim $private/.vimsession/$repo_local_name
+command vim $PRIVATE/.vimsession/$_repo_local_name
 
 unset _repo_local_path
 unset _repo_local_name
