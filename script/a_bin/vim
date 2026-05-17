@@ -6,9 +6,7 @@ if [ $# -ne 1 ]; then
   return 1
 fi
 
-if . "$A_CORE/_get_a_script" "$1"; then
-  vim "$_a_script"
-else
+if ! . "$A_CORE/_get_a_script" "$1"; then
   cat << 'EOF' > "$A_PATH_PRIVATE/$1"
 #!/bin/bash
 # description
@@ -20,6 +18,8 @@ fi
 
 
 EOF
-
   vim "$A_PATH_PRIVATE/$1"
+  return 0
 fi
+
+vim "$_a_script"

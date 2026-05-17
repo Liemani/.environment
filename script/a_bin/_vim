@@ -2,12 +2,12 @@
 # wrap vim
 # export useful environment variables
 
-export repo_local_path=$(2>/dev/null git rev-parse --show-toplevel)
-export repo_local_name=$(2>/dev/null basename "$repo_local_path")
-export git_branch=$(2>/dev/null git rev-parse --abbrev-ref HEAD)
+export REPO_ROOT=$(2>/dev/null git rev-parse --show-toplevel)
+export REPO_NAME=$(2>/dev/null basename "$REPO_ROOT")
+export REPO_BRANCH=$(2>/dev/null git rev-parse --abbrev-ref HEAD)
 
 command vim "$@"
 
-unset repo_local_path
-unset repo_local_name
-unset git_branch
+unset REPO_ROOT
+unset REPO_NAME
+unset REPO_BRANCH

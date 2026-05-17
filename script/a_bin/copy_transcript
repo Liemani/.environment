@@ -6,5 +6,4 @@ if [ $# -lt 1 ]; then
   return 1
 fi
 
-cd $SCRIPT/python
-a copy 요약해줘 `uv run get_transcript.py "$1"`
+a copy 요약해줘 `uv run --project "$SCRIPT/python" "$SCRIPT/python/get_transcript.py" "$1"`

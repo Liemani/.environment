@@ -1,5 +1,6 @@
 #!/bin/bash
 # usage: if . "$CORE/_get_a_script" "$1"; then
+# set first a_script to $_a_script
 
 _a_script=""
 for _a_path in "${a_path[@]}"; do

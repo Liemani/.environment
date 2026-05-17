@@ -67,7 +67,7 @@ set smarttab
 	" cindent도 마찬가지 오류가 있다.
 
 " Tab
-set tabstop=2    " tab size to be displayed
+set tabstop=8    " tab size to be displayed
 set shiftwidth=2
 set expandtab
 
@@ -136,11 +136,12 @@ cnoremap <C-D> <DEL>
 " nnoremap <F1> :Stdheader<CR>gg<S-V>}zf
 " nnoremap <F1><F1> gg<S-V>}zf
 " highlight word on the cursor without scroll
-nnoremap <F1> "tyiwbb/\C\<<C-R>t\><CR>
+nnoremap <F1> :let @/='\C\<<C-R><C-W>\>' <Bar> set hlsearch<CR>
+nnoremap <F1><F1> :let @/='<C-R><C-W>' <Bar> set hlsearch<CR>
 " make vimsession at project root
-" nnoremap <F3> :mksession! $repo_local_path/.vimsession<CR>
+" nnoremap <F3> :mksession! $REPO_ROOT/.vimsession<CR>
 " make vimsession at private dir
-nnoremap <F2> :mksession! $PRIVATE/.vimsession/$repo_local_name<CR>
+nnoremap <F2> :mksession! $PRIVATE/.vimsession/$REPO_NAME<CR>
 " make vimsession with desired name
 nnoremap <F2><F2> :mksession! $PRIVATE/.vimsession/
 " load vimrc
@@ -153,10 +154,13 @@ nnoremap <F4><F4> <C-W>:qa!<CR>
 nnoremap <F5> :e<CR>
 " load files to args with desired extension
 nnoremap <F6> :args **/*.
-" grep the word last copied in the current file
-nnoremap <F7> <CR>:vimgrep '<C-R>/' %<CR>:echo len(getqflist())<CR>
-" grep last searched item in all the child files and update quickfix list
-nnoremap <F7><F7> <CR>:cgetexpr systemlist("grep -rn --binary-files=without-match --exclude=tags '<C-R>/'")<CR>:echo len(getqflist())<CR>
+" grep the word on the cursor from the current file and update quickfix list
+"nnoremap <F7> :vimgrep '<C-R>/' % <Bar> echo len(getqflist())<CR>
+nnoremap <F7> :let @/='\C\<<C-R><C-W>\>' <Bar> cgetexpr systemlist("grep -rwIn --exclude=tags '<C-R><C-W>'") <Bar> echo len(getqflist())<CR>
+" grep the word on the cursor from all the child files and update quickfix list
+"nnoremap <F7><F7> :let @/='\C\<<C-R><C-W>\>' <Bar> cgetexpr systemlist("grep -rwIn --exclude=tags '<C-R><C-W>'") <Bar> echo len(getqflist())<CR>
+nnoremap <F7><F7> : cgetexpr systemlist("grep -rwIn --exclude=tags '<C-R>/'") <Bar> echo len(getqflist())<CR>
+" <F7><F7> 단어 단위 전체 검색 및 Quickfix 등록
 " grep last search in all the argument list
 " nnoremap <F7> :vimgrep // ##<CR>
 "" replace all "/ to "0
@@ -167,30 +171,31 @@ nnoremap <F8><F8> :argdo %s/<C-R>//<C-R>0/g<CR>
 "" target files to arg list
 " nnoremap <F9> :set list!<CR>
 "" store grep to @"
-nnoremap <F9> :let @t=""<CR> :g/<C-R>//y T<CR>
-vnoremap <F9><F9> <ESC>:let @t=""<CR> :'<,'>g/<C-R>//y T<CR>
+" nnoremap <F9> :let @t="" <Bar> g/<C-R>//y T <Bar> let @+=@t<CR>
+nnoremap <F9> :vimgrep // % <Bar> echo len(getqflist())<CR>
+vnoremap <F9> <ESC>:let @t="" <Bar> '<,'>g/<C-R>//y T <Bar> let @+=@t<CR>
 
 "" diff current file with HEAD on the new window
-nnoremap <F10> :call GitDiffHead()<CR>
-function! GitDiffHead()
+nnoremap <F10> :call GitDiffHead(expand('%'))<CR>
+function! GitDiffHead(filename)
   let t = &filetype
-  vnew
 
-  r !git show HEAD:#
+  vnew
+  execute "r !git show HEAD:" . a:filename
   normal ggdd
   diffthis
   let &filetype = t
-  wincmd p
 
+  wincmd p
   diffthis
 endfunction
 
 "" search "/ all arg list
-" nnoremap <F10> :set nomodifiable<CR>:set nowrite<CR>
-" nnoremap <F10><F10> :set modifiable<CR>:set write<CR>
-" nnoremap <F6> ye:vimgrep <C-R>" ##<CR>:copen<CR>
+" nnoremap <F10> :set nomodifiable <Bar> set nowrite<CR>
+" nnoremap <F10><F10> :set modifiable <Bar> set write<CR>
+" nnoremap <F6> ye:vimgrep <C-R>" ## <Bar> copen<CR>
 " nnoremap <F6> :args `find . -iname \*.\[hc\] -o -iname \*.\[hc\]pp`<CR>
-" nnoremap <F7> /<C-R><C-W><CR>N:vimgrep <C-R><C-W> ##<CR>:copen<CR>
+" nnoremap <F7> /<C-R><C-W><CR>N:vimgrep <C-R><C-W> ## <Bar> copen<CR>
 
 " disable shift-k
 nnoremap <S-K> <Nop>
@@ -210,8 +215,9 @@ let mapleader=' '
 " nnoremap <leader>d j0i<C-R>=system('date "+%F %a"')<CR><ESC>k$
 " nnoremap <leader>d o<C-R>=substitute(system('date "+%F %a"'), '\n\+$', '', '')<CR><ESC>
 nnoremap <leader>g :put =substitute(system('date \"+%F %a\"'), '\n\+$', '', '')<CR>
+nnoremap <leader>gg :put =substitute(system('date \"+[%Y-%m-%d %H:%M:%S]\"'), '\n\+$', '', '')<CR>
 " replace date
-nnoremap <leader>G 0<BS>/2<CR>d$:put =substitute(system('date \"+%F %a\"'), '\n\+$', '', '')<CR>kJ
+nnoremap <leader>G 0<BS>/2<CR>d$:put =substitute(system('date \"+%F %a\"'), '\n\+$', '', '')<CR>kJ:noh<CR>
 " add todo comment
 " nnoremap <leader>t o// TODO implement<ESC>
 nnoremap <leader>t :put ='// TODO implement'<CR>
@@ -282,7 +288,23 @@ vnoremap * :norm i/*A */
 "   file name
 " let @n=':let @+=fnameescape(expand("%:t")) '
 
-"command
+" command
 :command! Removecomments %s/\/\/.*/
 :command! Removeemptyspacelines %s/^\s\+$/
 :command! Removefollowingnewlines normal GV[]2jD
+
+filetype plugin indent on
+
+" java
+"autocmd FileType java setlocal efm=%A\ %#[javac]\ %f:%l:\ %t%*[^:]:\ %m,%Z\ %#[javac]\ %p^,%C%.%#,%f:%l%m,%+G\ %#[javac]\ \ %m,%-G%.%#
+"autocmd FileType java setlocal efm=\ %#[javac]\ %f:%l:\ %t%*[^:]:\ %m,%f:%l%m,%+G\ %#[javac]\ \ %.%#,%-G%.%#
+"autocmd FileType java setlocal efm=%Z\ %#[javac]\ %p^,%C%.%#,%A\ %#[javac]\ %f:%l:\ %t%*[^:]:\ %m,%f:%l%m,%-G%.%#
+autocmd FileType java nnoremap <leader>ctags :!ctags -R --languages=Java src/<CR>
+autocmd FileType java setlocal makeprg=ant
+autocmd FileType java setlocal efm=\ %#[javac]\ %f:%l:\ %t%*[^:]:\ %m,%f:%l%m,%-G%[%^\ ]%.%#,%-G
+
+autocmd FileType c nnoremap <leader>ctags :!ctags -R --languages=C src/<CR>
+autocmd FileType c setlocal makeprg=make
+autocmd FileType c setlocal efm=%f:%l:%c:\ %t%*[^:]:\ %m,%f:%l%m
+
+autocmd FileType python nnoremap <leader>ctags :!ctags -R --languages=Python .<CR>

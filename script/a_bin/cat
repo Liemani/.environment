@@ -6,9 +6,9 @@ if [ $# -ne 1 ]; then
   return 1
 fi
 
-if . "$A_CORE/_get_a_script" "$1"; then
-  cat "$_a_script"
-else
+if ! . "$A_CORE/_get_a_script" "$1"; then
   echo "a_cat: $1: No such file" >&2
   return 1
 fi
+
+cat "$_a_script"

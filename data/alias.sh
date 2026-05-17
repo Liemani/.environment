@@ -7,11 +7,11 @@ alias lsvs='ls $PRIVATE/.vimsession'
 alias mv='mv -i'	# prevent silent overwriting
 alias cp='cp -Rip'	# prevent silent overwriting
 # alias list='ls -al1 | grep -v -e '\''\.swp'\'' -e '\''\.DS_Store'\'' | sort -k1,1r -k9,9'
-alias list='ls -al | grep -v -e '\''\.DS_Store'\'' | sort -k1,1r -k9,9'
+alias list='ls -al | command grep -v -e '\''\.DS_Store'\'' | sort -k1,1r -k9,9'
 alias today='date "+%C%y%m%d"'
 alias timestamp='date "+%Y-%m-%d %H:%M:%S"'
 alias disklist='diskutil list'
-alias gemini='builtin cd $ENVHOME/3_archive/zz_gemini && command gemini'
+# alias gemini='builtin cd $ENVHOME/3_archive/zz_gemini && command gemini'
 # cd
 alias cde='cd $ENVHOME'
 alias cdr='cd $(git rev-parse --show-toplevel)'
@@ -23,8 +23,8 @@ alias cdtemp='mkdir /tmp/$(today); cd /tmp/$(today)'
 #   --decorate=short --color=always \
 #   --pretty=format:"%C(yellow)%h %C(magenta)%d %C(cyan)%<(6,trunc)%an %C(green)%ad %Creset%s" \
 #   --date=short'
-alias gitlog='git log --all --graph --max-count=42 --pretty=format:"%C(auto)%h%d %C(magenta)%<(6,trunc)%an %C(dim white)%ad %C(reset)%<(80,trunc)%s" --date=short'
-alias gitlogall='gitlog --max-count=-1'
+alias gitlog='git log --graph --max-count=21 --pretty=format:"%C(auto)%h%d %C(magenta)%<(6,trunc)%an %C(dim white)%ad %C(reset)%<(80,trunc)%s" --date=short'
+alias gitlogall='gitlog --all --max-count=-1'
 alias gits='git status && gitlog'
 
 # a_script
