@@ -53,3 +53,5 @@ generate_dynamic_prompt() {
 setopt PROMPT_SUBST
 
 PROMPT='$(generate_dynamic_prompt)'
+
+bindkey -e

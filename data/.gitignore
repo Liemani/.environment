@@ -20,6 +20,7 @@ node_modules/
 *.dYSM/
 # exclude all hidden files or directories
 #.*
+.obsidian
 # include all hidden directories
 #!.*/
 
