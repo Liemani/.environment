@@ -46,6 +46,7 @@ package-lock.json
 
 # include specific files without dot on it's base name
 !Makefile
+!LICENSE
 
 # include specific hidden files
 # !.vimsession

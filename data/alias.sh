@@ -1,5 +1,10 @@
 # override
 alias codex='codex --sandbox workspace-write --ask-for-approval never'
+alias csb='builtin cd $ENVHOME/3_project/second-brain && codex resume 019ec3b8-82e1-78b2-ba00-5653e43dd6c0'
+alias clfi='builtin cd $ENVHOME/3_project/zz_liefeni/liefeni && codex resume 019dc277-6ee1-7060-8db1-bae7e63684f0'
+alias cplay='builtin cd $ENVHOME/1_area/playground && codex resume 019ec877-99dc-7aa1-8a66-c6ea967fa7ae'
+alias cwsds='builtin cd $ENVHOME/3_project/work_study_dual_system && codex resume 019ec90f-49aa-7782-8808-5326f3746d6a'
+alias cpt='builtin cd $ENVHOME/git/liemani/project-template && codex resume 019ed8ec-4dfa-7410-ae22-01eab45e7a2e'
 alias cp='cp -Rip'	# prevent silent overwriting
 alias ed='ed -p "command > "'
 alias ls='ls -AF1'
@@ -24,6 +29,7 @@ alias disklist='diskutil list'
 alias cde='cd $ENVHOME'
 alias cdr='cd $(git rev-parse --show-toplevel)'
 alias cdtemp='mkdir /tmp/$(today); cd /tmp/$(today)'
+alias cdsb='cd $ENVHOME/3_project/second-brain'
 # git
 alias gitlog='git log --graph --max-count=21 --pretty=format:"%C(auto)%h%d %C(magenta)%<(6,trunc)%an %C(dim white)%ad %C(reset)%<(80,trunc)%s" --date=short'
 alias gitlogall='gitlog --all --max-count=-1'
@@ -49,11 +55,13 @@ alias vimalias='vim $ENVIRONMENT/data/alias.sh'
 alias vimpath='vim $ENVIRONMENT/data/path.sh'
 alias vimknownhosts='vim ~/.ssh/known_hosts'
 alias vimactivate='vim $ENVIRONMENT/activate.sh'
-alias vimregister='vim $ENVHOME/1_area/work_note/register.txt'
+alias vimreg='vim $ENVHOME/3_project/work/register.txt'
+alias vimpreg='vim $ENVHOME/3_project/second-brain/areas/register.txt'
 alias vimdata='vim $ENVHOME/1_area/work_note/data.txt'
 alias vima='vim $SCRIPT/bin/a'
 alias vimsshconfig='vim /Users/bagjeonghun/.ssh/config'
 alias vimhosts='sudo vim /etc/hosts'
+alias vimsb='vim $ENVHOME/3_project/second-brain/README.md'
 
 # simple
 alias dockerps="docker ps -a --format 'table {{.Names}}\t{{.Status}}'"

@@ -234,6 +234,8 @@ nnoremap <leader>yfn :let @+=fnameescape(expand("%:t"))<CR>
 noremap <leader>y "*y
 " delete and copy motion to clipboard
 noremap <leader>d "*d
+" paste motion from clipboard
+noremap <leader>p "*p
 " fold from cursor to match pair and jump to next function open in c
 nnoremap <leader>zf /{<CR>zf%j
 " netrw
