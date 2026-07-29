@@ -1,5 +1,0 @@
-mkdir -p "$local"
-mkdir -p "$remote"
-  mkdir -p "$personal"
-  mkdir -p "$extern"
-  mkdir -p "$work"

@@ -40,7 +40,7 @@ alias dump='a dump'
 alias record='a record'
 
 ## script
-alias shrc='. $HOME/.'"$shell"'rc'
+alias shrc='. "$HOME/.${RUNTIME_SHELL}rc"'
 
 ## cat
 alias catleases='cat /private/var/db/dhcpd_leases'

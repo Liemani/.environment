@@ -1,16 +1,11 @@
-# export ENVHOME
-# export useful paths
-
-if [[ $SHELL =~ .*/zsh ]]; then
-  export ENVHOME=$(realpath $(dirname ${(%):-%x})/../..)
-elif [[ $SHELL =~ .*/bash ]]; then
-  export ENVHOME=$(realpath $(dirname ${BASH_SOURCE[0]})/../..)
+if [ -z "${ENVIRONMENT-}" ] || [ -z "${ENVHOME-}" ]; then
+  printf 'data/path.sh must be sourced through activate.sh.\n' >&2
+  return 1 2>/dev/null || exit 1
 fi
 
 export DERIVED_DATA=$HOME/Library/Developer/Xcode/DerivedData
-export ENVIRONMENT=$ENVHOME/.environment
-  export SCRIPT=$ENVIRONMENT/script
-    export A_CORE=$SCRIPT/core
+export SCRIPT=$ENVIRONMENT/script
+export A_CORE=$SCRIPT/core
 export PRIVATE=$ENVHOME/.private
 export PLAYGROUND=$ENVHOME/1_area/playground
 

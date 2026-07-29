@@ -1,9 +1,6 @@
-# usage : $SHELL setup.sh
-basedir=`dirname $0`
+#!/usr/bin/env bash
 
-. $basedir/data/path.sh
-. $basedir/data/variable.sh
+# Establish installer paths and OS-based target shell context.
+. "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)/setup.sh.d/context.sh"
 
-# run script with matching shell
-# observation : mac run bash when run script with "sh" command but $SHELL has zsh
-$SHELL $basedir/setup.sh.d/setup.sh
+bash "$ENVIRONMENT/setup.sh.d/setup.sh"

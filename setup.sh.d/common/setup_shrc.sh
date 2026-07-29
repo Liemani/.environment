@@ -1,3 +1,9 @@
-. $ENVIRONMENT/data/variable.sh
-cat $ENVIRONMENT/copy_source/sh.rc >> $HOME/.$shell'rc'
-sed -i '' "s|\$ENVIRONMENT|$ENVIRONMENT|" $HOME/.$shell'rc'
+#!/usr/bin/env bash
+
+activation_line=". \"$ENVIRONMENT/activate.sh\""
+
+touch "$TARGET_RC"
+
+if ! grep -Fqx "$activation_line" "$TARGET_RC"; then
+  printf '%s\n' "$activation_line" >> "$TARGET_RC"
+fi

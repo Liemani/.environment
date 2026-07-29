@@ -4,13 +4,13 @@ New AI agents should begin by reading the source documents directly.
 
 ## Read In Order
 
-1. `readme.md`
+1. `README.md`
 2. `PRINCIPLES.md`
 3. `memory/index.md`
 
 ## Source Of Truth
 
-- `readme.md` = what this project is and how to navigate it
+- `README.md` = what this project is and how to navigate it
 - `PRINCIPLES.md` = why this project is organized this way
 - `memory/index.md` = project memory entry point
 - `memory/records/index.md` = record collection entry point

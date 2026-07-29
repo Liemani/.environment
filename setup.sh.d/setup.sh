@@ -1,7 +1,3 @@
-$SHELL ./$(dirname $0)/common/common.sh
+#!/usr/bin/env bash
 
-set_to_shell_script=set_$shell.sh
-
-if [ -f "$set_to_shell_script" ]; then
-  $SHELL $set_to_shell_script
-fi
+bash "$ENVIRONMENT/setup.sh.d/common/common.sh"

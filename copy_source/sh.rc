@@ -1,5 +1,0 @@
-# will activate environment
-ENVACTIVATE=$ENVIRONMENT/activate.sh
-echo ENVACTIVATE=$ENVACTIVATE
-. $ENVACTIVATE
-# did activate environment

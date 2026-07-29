@@ -222,9 +222,9 @@ nnoremap <leader>G 0<BS>/2<CR>d$:put =substitute(system('date \"+%F %a\"'), '\n\
 " nnoremap <leader>t o// TODO implement<ESC>
 nnoremap <leader>t :put ='// TODO implement'<CR>
 " copy file path to clipboard
-"   realpath of current file
+"   absolute path of current file
 nnoremap <leader>yfp :let @+=fnameescape(expand("%:p"))<CR>
-"   realpath of parent
+"   absolute path of parent
 nnoremap <leader>ydp :let @+=fnameescape(expand("%:p:h"))<CR>
 "   directory name
 nnoremap <leader>ydn :let @+=fnameescape(expand("%:p:h:t"))<CR>
@@ -283,9 +283,9 @@ vnoremap * :norm i/*A */
 " copy line to clipboard
 " let @r=':let @+=getline(".") '
 " copy file path to clipboard
-"   realpath of current file
+"   absolute path of current file
 " let @p=':let @+=fnameescape(expand("%:p")) '
-"   realpath of parent
+"   absolute path of parent
 " let @h=':let @+=fnameescape(expand("%:p:h")) '
 "   file name
 " let @n=':let @+=fnameescape(expand("%:t")) '
