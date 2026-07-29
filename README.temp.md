@@ -42,6 +42,15 @@ $SHELL .environment/setup.sh
 . $ENVHOME/activate.sh
 ```
 
+## Git configuration
+
+`data/.gitconfig` is the canonical source for shared Git behavior: aliases,
+diff and merge tools, pull behavior, the global ignore file, and the default
+branch. Setup registers it through `~/.gitconfig` using Git's include support.
+
+`data/git-user.config` contains the Git user identity included by
+`data/.gitconfig`.
+
 ## Usage of `a`
 
 ```
@@ -165,3 +174,22 @@ use "." not "bash" when calling a_script
   decision3 : prepend '_' for local variable - lowercase letter is also used for variable already
   consequences : a_script avoid env conflict with original process
 }
+## Philosophy
+
+This repository is the source of truth for my terminal environment.
+
+Its goal is to reproduce the same environment on a new machine with:
+
+1. `git clone`
+2. `./setup.sh`
+
+The repository owns the configuration for Git, shell, Vim, tmux, aliases, scripts, and related terminal tooling.
+
+Design principles:
+
+- This is a personal environment repository, not a generic dotfiles project.
+- `setup.sh` is an installer, not a migration tool.
+- The repository is the canonical source of configuration.
+- Setup scripts should primarily register the environment with the operating system.
+- Configuration data belongs under `data/`; setup scripts should not duplicate it.
+- Preserving or coexisting with existing user configuration is not a design goal.

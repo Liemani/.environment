@@ -1,0 +1,28 @@
+[include]
+    path = git-user.config
+
+[core]
+    excludesFile = ~/workspace/projects/.environment/data/.gitignore
+
+[alias]
+    pull = git pull --rebase
+
+[pull]
+    ff = only
+
+[diff]
+    tool = vimdiff
+
+[difftool "vimdiff"]
+    cmd = vimdiff "$LOCAL" "$REMOTE"
+
+[merge]
+    tool = vimdiff
+    conflictstyle = diff3
+
+[mergetool "vimdiff"]
+    cmd = vimdiff "$LOCAL" "$BASE" "$REMOTE" "$MERGED"
+    trustExitCode = false
+
+[init]
+    defaultBranch = main
