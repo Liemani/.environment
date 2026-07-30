@@ -1,3 +1,5 @@
 !/script/bin/a
 !/script/core/[!.]*
 !/script/a_bin/[!.]*
+/effective/
+/profile/profile.ini

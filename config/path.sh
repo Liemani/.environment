@@ -1,5 +1,5 @@
 if [ -z "${ENVIRONMENT-}" ] || [ -z "${ENVHOME-}" ]; then
-  printf 'data/path.sh must be sourced through activate.sh.\n' >&2
+  printf 'path.sh must be sourced through activate.sh.\n' >&2
   return 1 2>/dev/null || exit 1
 fi
 

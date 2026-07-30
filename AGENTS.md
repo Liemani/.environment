@@ -19,6 +19,9 @@ New AI agents should begin by reading the source documents directly.
 - `memory/*/index.md` = what each collection does
 - `memory/indexes/template.md`, `memory/wiki/template.md`, `memory/records/*/template.md` = local guide docs for their own document type
 - `raw/*` = unreconciled source inputs
+- `config/*` = editable environment configuration sources
+- `profile/profile.ini` = machine-specific input, created from `profile/profile.ini.sample`
+- `effective/*` = built runtime configuration; do not edit or commit it
 - When creating a new memory document, inspect the local `template.md` first and copy only the template block.
 
 ## Guidelines

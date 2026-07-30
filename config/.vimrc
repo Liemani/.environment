@@ -145,7 +145,7 @@ nnoremap <F2> :mksession! $PRIVATE/.vimsession/$REPO_NAME<CR>
 " make vimsession with desired name
 nnoremap <F2><F2> :mksession! $PRIVATE/.vimsession/
 " load vimrc
-nnoremap <F3> :source $ENVIRONMENT/data/.vimrc<CR>
+nnoremap <F3> :source $ENVIRONMENT/effective/.vimrc<CR>
 " quit
 nnoremap <F4> :qa<CR>
 " quit all buffers without write

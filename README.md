@@ -13,16 +13,22 @@ Supported installation policies:
 - macOS (`Darwin`): register runtime activation in `~/.zshrc`
 - Linux: register runtime activation in `~/.bashrc`
 
-Clone the repository, enter it, and run the installer.
+Clone the repository, create the machine-specific profile, build the effective
+configuration, then run the installer.
 
 ```sh
 git clone https://github.com/Liemani/.environment.git
 cd .environment
+cp profile/profile.ini.sample profile/profile.ini
+# Edit profile/profile.ini for this machine.
+./build.sh
 ./setup.sh
 ```
 
 Open a new terminal after setup. The installer is implemented in Bash and does
-not use the current login shell to choose its policy.
+not use the current login shell to choose its policy. `setup.sh` does not run a
+build; run `./build.sh` again after changing `config/` or
+`profile/profile.ini`.
 
 ## Runtime
 
@@ -32,13 +38,25 @@ The registered rc file sources `activate.sh`.
 it, initializes common environment settings, then applies the matching prompt,
 completion, and key-binding integration.
 
-## Configuration
+## Configuration Lifecycle
 
-- `data/.gitconfig`: shared Git configuration
-- `data/git-user.config`: Git user identity
-- `data/path.sh`: common environment paths
-- `data/alias.sh`: shell aliases and functions
-- `data/.vimrc`: Vim configuration
+- `config/`: editable configuration sources committed to Git
+- `profile/profile.ini`: machine-specific input created from the sample and not committed
+- `effective/`: built runtime configuration, not committed or edited directly
+- `build.sh`: fully rebuilds `effective/` from `config/` after confirming a profile exists
+
+`build.sh` creates a complete temporary build artifact before replacing
+`effective/`. If a build fails before replacement, the previous effective
+configuration is left intact. See [RENDERING.md](RENDERING.md) for the
+placeholder specification.
+
+## Configuration Contents
+
+- `config/.gitconfig`: shared Git configuration
+- `config/git-user.config`: Git user identity template
+- `config/path.sh`: common environment paths
+- `config/alias.sh`: shell aliases and functions
+- `config/.vimrc`: Vim configuration
 - `script/`: terminal scripts, including scripts invoked through `a`
 
 ## Usage of `a`

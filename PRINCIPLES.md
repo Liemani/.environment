@@ -18,7 +18,9 @@ created: 2026-06-30
 - `memory/`는 프로젝트 문맥과 기억을 맡는다.
 - `memory/records/`는 기록 컬렉션을 맡는다.
 - `raw/`는 아직 정리되지 않은 입력을 맡는다.
-- `data/`는 편집 가능한 로컬 설정을 맡는다.
+- `config/`는 편집 가능한 설정 원본을 맡는다.
+- `profile/`은 machine-specific 입력을 맡는다.
+- `effective/`는 build artifact를 맡는다.
 
 ## Project Layers
 
@@ -28,7 +30,9 @@ created: 2026-06-30
 - `memory/`는 프로젝트 기억과 탐색을 담는다.
 - `memory/records/`는 기록 컬렉션을 담는다.
 - `raw/`는 원본 입력과 미정리 자료를 담는다.
-- `data/`는 활성 설정과 사용자별 내용을 담는다.
+- `config/`는 사람이 수정하는 설정 원본을 담는다.
+- `profile/`은 사람이 수정하는 machine-specific 값을 담는다.
+- `effective/`는 runtime이 읽는 build artifact를 담는다.
 - `script/`는 실행 가능한 도구를 담는다.
 
 ## Minimal Useful Structure

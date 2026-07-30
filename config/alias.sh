@@ -33,7 +33,7 @@ alias cdsb='cd $ENVHOME/3_project/second-brain'
 # git
 alias gitlog='git log --graph --max-count=21 --pretty=format:"%C(auto)%h%d %C(magenta)%<(6,trunc)%an %C(dim white)%ad %C(reset)%<(80,trunc)%s" --date=short'
 alias gitlogall='gitlog --all --max-count=-1'
-alias gits='git status && gitlog'
+alias gits='git status --ignored && gitlog'
 
 # a_script
 alias dump='a dump'
@@ -47,19 +47,19 @@ alias catleases='cat /private/var/db/dhcpd_leases'
 alias cathosts='sudo cat /etc/hosts'
 
 ## vim
-alias vimvimrc='vim $ENVIRONMENT/data/.vimrc'
-alias vimgitignore='vim $ENVIRONMENT/data/.gitignore'
+alias vimvimrc='vim $ENVIRONMENT/config/.vimrc'
+alias vimgitignore='vim $ENVIRONMENT/config/.gitignore'
 alias vimrecord='vim $personal/.private/record.txt'
 alias vimdump='vim $PRIVATE/dump.txt'
-alias vimalias='vim $ENVIRONMENT/data/alias.sh'
-alias vimpath='vim $ENVIRONMENT/data/path.sh'
+alias vimalias='vim $ENVIRONMENT/config/alias.sh'
+alias vimpath='vim $ENVIRONMENT/config/path.sh'
 alias vimknownhosts='vim ~/.ssh/known_hosts'
 alias vimactivate='vim $ENVIRONMENT/activate.sh'
 alias vimreg='vim $ENVHOME/3_project/work/register.txt'
 alias vimpreg='vim $ENVHOME/3_project/second-brain/areas/register.txt'
 alias vimdata='vim $ENVHOME/1_area/work_note/data.txt'
 alias vima='vim $SCRIPT/bin/a'
-alias vimsshconfig='vim /Users/bagjeonghun/.ssh/config'
+alias vimsshconfig='vim $HOME/.ssh/config'
 alias vimhosts='sudo vim /etc/hosts'
 alias vimsb='vim $ENVHOME/3_project/second-brain/README.md'
 

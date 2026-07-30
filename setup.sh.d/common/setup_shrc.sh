@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 activation_line=". \"$ENVIRONMENT/activate.sh\""
 
 touch "$TARGET_RC"

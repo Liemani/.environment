@@ -2,7 +2,7 @@
     path = git-user.config
 
 [core]
-    excludesFile = ~/workspace/projects/.environment/data/.gitignore
+    excludesFile = ~/.config/git/ignore
 
 [alias]
     pull = git pull --rebase
