@@ -50,6 +50,23 @@ completion, and key-binding integration.
 configuration is left intact. See [RENDERING.md](RENDERING.md) for the
 placeholder specification.
 
+## Repository Structure
+
+### Public API
+
+- `build.sh`: builds `effective/` from `config/` and `profile/`
+- `setup.sh`: registers the built environment with the target shell and Git
+- `activate.sh`: initializes the built environment in the current Bash or Zsh session
+
+### Internal Implementation
+
+- `lib/build/`: profile parsing and configuration rendering
+- `lib/runtime/`: shared and shell-specific runtime initialization
+- `lib/setup/`: installer context and registration helpers
+
+`lib/` is implementation detail. Use the root lifecycle commands rather than
+invoking its scripts directly.
+
 ## Configuration Contents
 
 - `config/.gitconfig`: shared Git configuration

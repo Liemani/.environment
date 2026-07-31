@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # This file is sourced by the Bash installer entrypoint.
-INSTALLER_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)" || return 1
+INSTALLER_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd -P)" || return 1
 
 export ENVIRONMENT="$INSTALLER_ROOT"
 export ENVHOME="$(cd "$ENVIRONMENT/.." && pwd -P)" || return 1
