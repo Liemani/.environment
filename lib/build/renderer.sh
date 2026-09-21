@@ -10,7 +10,7 @@ fi
 ENVIRONMENT="$1"
 CONFIG="$ENVIRONMENT/config"
 PROFILE="$ENVIRONMENT/profile/profile.ini"
-EFFECTIVE="$ENVIRONMENT/effective"
+GENERATED="$ENVIRONMENT/generated"
 RUNTIME="$ENVIRONMENT/lib/runtime"
 TEMPORARY=""
 BACKUP=""
@@ -184,7 +184,7 @@ fi
 
 load_profile
 
-TEMPORARY="$(mktemp -d "$ENVIRONMENT/.effective.tmp.XXXXXX")"
+TEMPORARY="$(mktemp -d "$ENVIRONMENT/.generated.tmp.XXXXXX")"
 
 while IFS= read -r -d '' source_file; do
   relative_path=${source_file#"$CONFIG"/}
@@ -195,19 +195,19 @@ done < <(find "$CONFIG" -type f -print0)
 
 cp -R "$RUNTIME/." "$TEMPORARY/runtime"
 
-if [ -e "$EFFECTIVE" ]; then
-  BACKUP="$ENVIRONMENT/.effective.previous.$$"
-  mv "$EFFECTIVE" "$BACKUP"
+if [ -e "$GENERATED" ]; then
+  BACKUP="$ENVIRONMENT/.generated.previous.$$"
+  mv "$GENERATED" "$BACKUP"
 fi
 
-if mv "$TEMPORARY" "$EFFECTIVE"; then
+if mv "$TEMPORARY" "$GENERATED"; then
   TEMPORARY=""
   if [ -n "$BACKUP" ]; then
     rm -rf "$BACKUP"
   fi
 else
   if [ -n "$BACKUP" ]; then
-    mv "$BACKUP" "$EFFECTIVE"
+    mv "$BACKUP" "$GENERATED"
   fi
   exit 1
 fi

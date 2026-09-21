@@ -1,7 +1,7 @@
 # Rendering Specification
 
 `build.sh` renders every file in `config/` into the matching path under
-`effective/`.
+`generated/`.
 
 ## Profile Format
 
@@ -63,8 +63,8 @@ followed by the `\(workspace)` placeholder.
 ## Atomic Build
 
 The renderer writes every build artifact to a temporary directory first. Only
-after all profile parsing and rendering succeeds does it replace `effective/`.
-If rendering fails, the existing effective configuration remains available.
+after all profile parsing and rendering succeeds does it replace `generated/`.
+If rendering fails, the existing generated configuration remains available.
 
 ## Future Evolution
 

@@ -13,7 +13,7 @@ Supported installation policies:
 - macOS (`Darwin`): register runtime activation in `~/.zshrc`
 - Linux: register runtime activation in `~/.bashrc`
 
-Clone the repository, create the machine-specific profile, build the effective
+Clone the repository, create the machine-specific profile, build the generated
 configuration, then run the installer.
 
 ```sh
@@ -42,11 +42,11 @@ completion, and key-binding integration.
 
 - `config/`: editable configuration sources committed to Git
 - `profile/profile.ini`: machine-specific input created from the sample and not committed
-- `effective/`: built runtime configuration, not committed or edited directly
-- `build.sh`: fully rebuilds `effective/` from `config/` after confirming a profile exists
+- `generated/`: built runtime configuration, not committed or edited directly
+- `build.sh`: fully rebuilds `generated/` from `config/` after confirming a profile exists
 
 `build.sh` creates a complete temporary build artifact before replacing
-`effective/`. If a build fails before replacement, the previous effective
+`generated/`. If a build fails before replacement, the previous generated
 configuration is left intact. See [RENDERING.md](RENDERING.md) for the
 placeholder specification.
 
@@ -54,8 +54,8 @@ placeholder specification.
 
 ### Public API
 
-- `build.sh`: builds `effective/` from `config/` and `profile/`
-- `setup.sh`: registers the built environment with the target shell and Git
+- `build.sh`: builds `generated/` from `config/` and `profile/`
+- `setup.sh`: registers `~/.config/environment` as the generated environment and connects the target shell and Git through that stable path
 - `activate.sh`: initializes the built environment in the current Bash or Zsh session
 
 ### Internal Implementation
@@ -66,6 +66,23 @@ placeholder specification.
 
 `lib/` is implementation detail. Use the root lifecycle commands rather than
 invoking its scripts directly.
+
+## Runtime Registration
+
+`setup.sh` registers one runtime directory:
+
+```text
+~/.config/environment -> <repository>/generated
+```
+
+Git includes `~/.config/environment/.gitconfig`, and that configuration uses
+`~/.config/environment/.gitignore`. This keeps consumers independent of the
+repository's installation path and avoids per-file registration.
+
+If `~/.config/environment` is already a symbolic link, setup replaces that
+link. If it is a regular file or directory, setup leaves it unchanged, skips
+Git registration, completes independent shell registration, and returns a
+failure status.
 
 ## Configuration Contents
 

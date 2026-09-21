@@ -14,9 +14,9 @@ export ENVIRONMENT="$(CDPATH= builtin cd "$(dirname "$_activate_source")" && pwd
 export ENVHOME="$(CDPATH= builtin cd "$ENVIRONMENT/.." && pwd -P)" || return 1
 unset _activate_source
 
-if [ ! -f "$ENVIRONMENT/effective/runtime/activate.sh" ]; then
-  printf 'No effective configuration found. Create profile/profile.ini and run ./build.sh.\n' >&2
+if [ ! -f "$ENVIRONMENT/generated/runtime/activate.sh" ]; then
+  printf 'No generated configuration found. Create profile/profile.ini and run ./build.sh.\n' >&2
   return 1 2>/dev/null || exit 1
 fi
 
-. "$ENVIRONMENT/effective/runtime/activate.sh"
+. "$ENVIRONMENT/generated/runtime/activate.sh"

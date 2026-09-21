@@ -21,7 +21,7 @@ New AI agents should begin by reading the source documents directly.
 - `raw/*` = unreconciled source inputs
 - `config/*` = editable environment configuration sources
 - `profile/profile.ini` = machine-specific input, created from `profile/profile.ini.sample`
-- `effective/*` = built runtime configuration; do not edit or commit it
+- `generated/*` = built runtime configuration; do not edit or commit it. `setup.sh` registers it through `~/.config/environment`.
 - `lib/*` = internal implementation for the public lifecycle commands
 - When creating a new memory document, inspect the local `template.md` first and copy only the template block.
 
