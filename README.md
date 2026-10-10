@@ -13,22 +13,29 @@ Supported installation policies:
 - macOS (`Darwin`): register runtime activation in `~/.zshrc`
 - Linux: register runtime activation in `~/.bashrc`
 
+The repository's parent directory becomes `ENVHOME`; private scripts are read
+from `ENVHOME/.private/a_bin`. Choose the clone location accordingly. On a
+machine with existing shell or Git configuration, inspect and back up the
+target rc file, global Git configuration, and `~/.config/environment` before setup.
+
 Clone the repository, create the machine-specific profile, build the generated
 configuration, then run the installer.
 
 ```sh
 git clone https://github.com/Liemani/.environment.git
 cd .environment
-cp profile/profile.ini.sample profile/profile.ini
-# Edit profile/profile.ini for this machine.
+cp profile/profile.toml.sample profile/profile.toml
+# Edit profile/profile.toml for this machine.
 ./build.sh
 ./setup.sh
 ```
 
+The current configuration uses `username` and `email` from the profile.
+
 Open a new terminal after setup. The installer is implemented in Bash and does
 not use the current login shell to choose its policy. `setup.sh` does not run a
-build; run `./build.sh` again after changing `config/` or
-`profile/profile.ini`.
+build. Run `./build.sh` again after changing `config/`, `lib/runtime/`, or
+`profile/profile.toml`; setup does not need to be rerun after a rebuild.
 
 ## Runtime
 
@@ -41,9 +48,9 @@ completion, and key-binding integration.
 ## Configuration Lifecycle
 
 - `config/`: editable configuration sources committed to Git
-- `profile/profile.ini`: machine-specific input created from the sample and not committed
+- `profile/profile.toml`: machine-specific input created from the sample and not committed
 - `generated/`: built runtime configuration, not committed or edited directly
-- `build.sh`: fully rebuilds `generated/` from `config/` after confirming a profile exists
+- `build.sh`: rebuilds `generated/` from `config/` and `lib/runtime/` after confirming a profile exists
 
 `build.sh` creates a complete temporary build artifact before replacing
 `generated/`. If a build fails before replacement, the previous generated
@@ -54,8 +61,10 @@ placeholder specification.
 
 ### Public API
 
-- `build.sh`: builds `generated/` from `config/` and `profile/`
-- `setup.sh`: registers `~/.config/environment` as the generated environment and connects the target shell and Git through that stable path
+- `build.sh`: builds `generated/` from `config/`, `lib/runtime/`, and `profile/`
+- `setup.sh`: links `~/.config/environment` to `generated/`, registers Git
+  through the link, and adds the repository's `activate.sh` path to the target
+  shell rc file
 - `activate.sh`: initializes the built environment in the current Bash or Zsh session
 
 ### Internal Implementation
@@ -76,8 +85,9 @@ invoking its scripts directly.
 ```
 
 Git includes `~/.config/environment/.gitconfig`, and that configuration uses
-`~/.config/environment/.gitignore`. This keeps consumers independent of the
-repository's installation path and avoids per-file registration.
+`~/.config/environment/.gitignore`. The shell rc file instead sources
+`<repository>/activate.sh` by absolute path, so keep the installed repository
+at that location.
 
 If `~/.config/environment` is already a symbolic link, setup replaces that
 link. If it is a regular file or directory, setup leaves it unchanged, skips

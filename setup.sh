@@ -8,7 +8,7 @@ ENVIRONMENT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 . "$ENVIRONMENT/lib/setup/context.sh"
 
 if [ ! -d "$ENVIRONMENT/generated" ]; then
-  printf 'No generated configuration found. Create profile/profile.ini and run ./build.sh before setup.\n' >&2
+  printf 'No generated configuration found. Create profile/profile.toml and run ./build.sh before setup.\n' >&2
   exit 1
 fi
 

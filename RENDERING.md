@@ -5,18 +5,21 @@
 
 ## Profile Format
 
-`profile/profile.ini` uses one `key=value` entry per non-empty line.
+`profile/profile.toml` uses a restricted TOML subset: top-level identifier
+keys with single-line, double-quoted string values.
 
-```ini
-workspace=/Users/example/workspace
-username=example
-email=me@example.com
+```toml
+# Machine-specific Git identity
+username = "example"
+email = "me@example.com"
 ```
 
 - Keys must be identifiers: they start with a letter or `_`, followed by
-  letters, digits, or `_`. Whitespace around keys is not trimmed.
-- Values are the text after the first `=` and may be empty.
-- Sections, duplicate keys, and non-empty lines without `=` are invalid.
+  letters, digits, or `_`. Spaces and tabs around the key and `=` are allowed.
+- Values may be empty (`""`) and may contain `#` or `=`, but not quotes,
+  backslashes, or newlines. Escapes and inline comments are not supported.
+- Blank lines and full-line `#` comments are allowed. Duplicate keys, tables,
+  and other TOML value types are not supported.
 
 ## Placeholder Syntax
 
@@ -29,9 +32,7 @@ The only placeholder syntax is:
 `identifier` must exactly match a profile key.
 
 ```text
-\(workspace)
 \(username)
-\(company)
 \(email)
 ```
 
@@ -46,19 +47,19 @@ The build fails when it finds:
 - an unknown profile key
 - a missing closing `)`
 - an identifier containing unsupported syntax
-- an invalid profile entry or duplicate profile key
+- an invalid or unsupported profile entry or duplicate profile key
 
 Examples of unsupported placeholder syntax:
 
 ```text
-\(workspace.path)
+\(username.value)
 \(upper(username))
-\(workspace + "/src")
+\(username + "suffix")
 \(a.b.c)
 ```
 
-Escaping is not supported. `\\(workspace)` is interpreted as a literal `\`
-followed by the `\(workspace)` placeholder.
+Placeholder escaping is not supported. `\\(username)` is interpreted as a
+literal `\` followed by the `\(username)` placeholder.
 
 ## Atomic Build
 

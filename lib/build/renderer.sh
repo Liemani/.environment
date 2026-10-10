@@ -9,7 +9,7 @@ fi
 
 ENVIRONMENT="$1"
 CONFIG="$ENVIRONMENT/config"
-PROFILE="$ENVIRONMENT/profile/profile.ini"
+PROFILE="$ENVIRONMENT/profile/profile.toml"
 GENERATED="$ENVIRONMENT/generated"
 RUNTIME="$ENVIRONMENT/lib/runtime"
 TEMPORARY=""
@@ -44,27 +44,22 @@ is_identifier() {
 
 load_profile() {
   local line key value existing_key index line_number
+  local entry_pattern='^[[:blank:]]*([A-Za-z_][A-Za-z0-9_]*)[[:blank:]]*=[[:blank:]]*"([^"\\]*)"[[:blank:]]*$'
+  local skip_pattern='^[[:blank:]]*(#.*)?$'
 
   line_number=0
   while IFS= read -r line || [ -n "$line" ]; do
     line_number=$((line_number + 1))
 
-    if [ -z "$line" ]; then
+    if [[ $line =~ $skip_pattern ]]; then
       continue
     fi
 
-    case "$line" in
-      *=*)
-        key=${line%%=*}
-        value=${line#*=}
-        ;;
-      *)
-        fail "Invalid profile entry at line $line_number: expected key=value"
-        ;;
-    esac
-
-    if ! is_identifier "$key"; then
-      fail "Invalid profile key at line $line_number: $key"
+    if [[ $line =~ $entry_pattern ]]; then
+      key=${BASH_REMATCH[1]}
+      value=${BASH_REMATCH[2]}
+    else
+      fail "Invalid profile entry at line $line_number: expected key = \"value\" without escapes"
     fi
 
     index=0
@@ -178,7 +173,7 @@ fi
 
 if [ ! -f "$PROFILE" ]; then
   printf 'Profile is missing: %s\n' "$PROFILE" >&2
-  printf 'Copy profile/profile.ini.sample to profile/profile.ini, then edit it.\n' >&2
+  printf 'Copy profile/profile.toml.sample to profile/profile.toml, then edit it.\n' >&2
   exit 1
 fi
 
