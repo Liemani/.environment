@@ -33,7 +33,7 @@ created: 2026-06-30
 - `raw/`는 원본 입력과 미정리 자료를 담는다.
 - `config/`는 사람이 수정하는 설정 원본을 담는다.
 - `profile/`은 사람이 수정하는 machine-specific 값을 담는다.
-- `generated/`는 `~/.config/environment`를 통해 runtime이 읽는 build artifact를 담는다.
+- `generated/`는 `~/.config/environment/generated`를 통해 Git이 읽는 build artifact를 담는다.
 - `lib/`는 build, setup, runtime의 내부 구현을 담는다.
 - `script/`는 실행 가능한 도구를 담는다.
 

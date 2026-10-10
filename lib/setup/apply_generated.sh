@@ -4,7 +4,23 @@ set -euo pipefail
 
 CONFIG_DIRECTORY="$HOME/.config"
 TARGET="$CONFIG_DIRECTORY/environment"
-SOURCE="$ENVIRONMENT/generated"
+
+ensure_link() {
+  local link="$TARGET/$1" source="$2"
+
+  if [ -L "$link" ]; then
+    if [ "$(readlink "$link")" = "$source" ]; then
+      return
+    fi
+    rm "$link"
+  elif [ -e "$link" ]; then
+    printf 'Refusing to replace non-symlink: %s\n' "$link" >&2
+    return 1
+  fi
+
+  ln -s "$source" "$link"
+  printf 'Linked: %s -> %s\n' "$link" "$source"
+}
 
 if [ ! -d "$CONFIG_DIRECTORY" ]; then
   mkdir -p "$CONFIG_DIRECTORY"
@@ -12,14 +28,28 @@ if [ ! -d "$CONFIG_DIRECTORY" ]; then
 fi
 
 if [ -L "$TARGET" ]; then
-  rm "$TARGET"
-  action='Replaced symlink'
-elif [ -e "$TARGET" ]; then
-  printf 'Refusing to replace non-symlink runtime configuration: %s\n' "$TARGET" >&2
+  printf 'Refusing to replace environment symlink; expected a directory: %s\n' "$TARGET" >&2
   exit 1
-else
-  action='Created symlink'
 fi
 
-ln -s "$SOURCE" "$TARGET"
-printf '%s: %s -> %s\n' "$action" "$TARGET" "$SOURCE"
+if [ -e "$TARGET" ] && [ ! -d "$TARGET" ]; then
+  printf 'Refusing to replace non-directory environment configuration: %s\n' "$TARGET" >&2
+  exit 1
+fi
+
+if [ -d "$TARGET" ]; then
+  for name in generated private; do
+    if [ -e "$TARGET/$name" ] && [ ! -L "$TARGET/$name" ]; then
+      printf 'Refusing to replace non-symlink: %s\n' "$TARGET/$name" >&2
+      exit 1
+    fi
+  done
+fi
+
+if [ ! -d "$TARGET" ]; then
+  mkdir "$TARGET"
+  printf 'Created directory: %s\n' "$TARGET"
+fi
+
+ensure_link generated "$ENVIRONMENT/generated"
+ensure_link private "$ENVHOME/.private"

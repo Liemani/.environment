@@ -12,4 +12,9 @@ if [ ! -d "$ENVIRONMENT/generated" ]; then
   exit 1
 fi
 
+if [ ! -f "$ENVHOME/.private/.ssh/config" ]; then
+  printf 'Private SSH configuration not found: %s\n' "$ENVHOME/.private/.ssh/config" >&2
+  exit 1
+fi
+
 bash "$ENVIRONMENT/lib/setup/install.sh"

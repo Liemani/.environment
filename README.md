@@ -13,10 +13,11 @@ Supported installation policies:
 - macOS (`Darwin`): register runtime activation in `~/.zshrc`
 - Linux: register runtime activation in `~/.bashrc`
 
-The repository's parent directory becomes `ENVHOME`; private scripts are read
-from `ENVHOME/.private/a_bin`. Choose the clone location accordingly. On a
-machine with existing shell or Git configuration, inspect and back up the
-target rc file, global Git configuration, and `~/.config/environment` before setup.
+The repository's parent directory becomes `ENVHOME`. Place `.private` beside
+`.environment`; setup requires `.private/.ssh/config`, and private scripts are
+read from `.private/a_bin`. On a machine with existing configuration, inspect
+and back up the target shell rc file, global Git and SSH configuration, and
+`~/.config/environment` before setup.
 
 Clone the repository, create the machine-specific profile, build the generated
 configuration, then run the installer.
@@ -24,6 +25,7 @@ configuration, then run the installer.
 ```sh
 git clone https://github.com/Liemani/.environment.git
 cd .environment
+# Place the private checkout at ../.private before setup.
 cp profile/profile.toml.sample profile/profile.toml
 # Edit profile/profile.toml for this machine.
 ./build.sh
@@ -62,9 +64,9 @@ placeholder specification.
 ### Public API
 
 - `build.sh`: builds `generated/` from `config/`, `lib/runtime/`, and `profile/`
-- `setup.sh`: links `~/.config/environment` to `generated/`, registers Git
-  through the link, and adds the repository's `activate.sh` path to the target
-  shell rc file
+- `setup.sh`: creates `~/.config/environment/` with links to `generated/` and
+  `.private/`, registers Git and SSH through those links, and adds the
+  repository's `activate.sh` path to the target shell rc file
 - `activate.sh`: initializes the built environment in the current Bash or Zsh session
 
 ### Internal Implementation
@@ -78,21 +80,25 @@ invoking its scripts directly.
 
 ## Runtime Registration
 
-`setup.sh` registers one runtime directory:
+`setup.sh` registers two directories:
 
 ```text
-~/.config/environment -> <repository>/generated
+~/.config/environment/
+├── generated -> <repository>/generated
+└── private   -> <repository parent>/.private
 ```
 
-Git includes `~/.config/environment/.gitconfig`, and that configuration uses
-`~/.config/environment/.gitignore`. The shell rc file instead sources
+Git includes `~/.config/environment/generated/.gitconfig`, and that
+configuration uses `~/.config/environment/generated/.gitignore`. SSH includes
+`~/.config/environment/private/.ssh/config`, which can include other private
+SSH files through the same link. The shell rc file sources
 `<repository>/activate.sh` by absolute path, so keep the installed repository
 at that location.
 
-If `~/.config/environment` is already a symbolic link, setup replaces that
-link. If it is a regular file or directory, setup leaves it unchanged, skips
-Git registration, completes independent shell registration, and returns a
-failure status.
+Setup refuses a symbolic link or other non-directory at
+`~/.config/environment`. Existing non-symlink entries named `generated` or
+`private` are left untouched and cause setup to fail. Setup adds the SSH Include
+at the beginning of `~/.ssh/config` if it is missing.
 
 ## Configuration Contents
 
